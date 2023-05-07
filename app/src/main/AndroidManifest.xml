@@ -6,15 +6,12 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/inputpc2"
+        android:icon="@drawable/app_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/inputpc2"
+        android:roundIcon="@drawable/app_logo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KursachOOP"
+        android:theme="@style/AppTheme"
         tools:targetApi="31">
-        <activity
-            android:name=".CPUActivity"
-            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

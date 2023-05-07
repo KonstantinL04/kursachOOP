@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black37">#5E000000</color>
     <color name="colorPrimary">#B3CCD6</color>
     <color name="colorPrimaryDark">#527997</color>
+    <color name="gradientStart">#D13251</color>
+    <color name="gradientEnd">#451FAC</color>
+    <color name="prim">#00451FAC</color>
+
 </resources>
