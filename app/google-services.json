@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "38419104402",
+    "firebase_url": "https://kursovay-oop-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "kursovay-oop",
+    "storage_bucket": "kursovay-oop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:38419104402:android:b493f79ee08a11fa1fdc4b",
+        "android_client_info": {
+          "package_name": "com.example.kursachoop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "38419104402-fd3amf6e9ff9nl6n6hqvvr6rt73jc256.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCm7-amncyFe_wzwBF32E4Cj_jgZqMHTgs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "38419104402-fd3amf6e9ff9nl6n6hqvvr6rt73jc256.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

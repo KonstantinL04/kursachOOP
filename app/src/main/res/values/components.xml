@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="components">
+        <item>Процессор</item>
+        <item>Материнская плата</item>
+        <item>Корпус</item>
+        <item>Видеокарта</item>
+        <item>Охлаждение процессора</item>
+        <item>Оперативная память</item>
+        <item>Хранение данных</item>
+        <item>Блок питания</item>
+        <item>Звуковая карта</item>
+    </string-array>
+</resources>
