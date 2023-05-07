@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
-    tools:context=".LoginActivity">
+    tools:context=".RegisterActivity"
+    android:background="@drawable/gradient_background">
 
     <ImageView
         android:id="@+id/logo"
@@ -48,8 +48,9 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="21sp" />
+
     <EditText
-        android:id="@+id/edTxt_login"
+        android:id="@+id/reg_edTxt_nameLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_pc"
@@ -62,6 +63,19 @@
         android:shadowRadius="3"
         android:hint="Логин или номер телефона"/>
 
+    <EditText
+        android:id="@+id/edTxt_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reg_edTxt_nameLogin"
+        android:background="@drawable/button_login"
+        android:padding="15dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="15dp"
+        android:shadowColor="@color/black37"
+        android:shadowDy="3"
+        android:shadowRadius="3"
+        android:hint="Номер телефона"/>
     <EditText
         android:id="@+id/edTxt_password"
         android:layout_width="match_parent"
@@ -94,21 +108,9 @@
             android:shadowColor="@color/black37"
             android:shadowDy="3"
             android:shadowRadius="3"
-            android:text="Запомнить меня"
+            android:text="Нажимая, вы соглашаетесь на обработку персональных данных"
             android:textColor="@color/white" />
 
-        <TextView
-            android:id="@+id/txt_password_forget"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:shadowColor="@color/black37"
-            android:shadowDy="3"
-            android:shadowRadius="3"
-            android:layout_marginRight="40dp"
-            android:text="Забыли пароль?"
-            android:textAlignment="textEnd"
-            android:textColor="@color/white" />
     </LinearLayout>
 
     <Button
@@ -125,11 +127,11 @@
         android:shadowColor="@color/black37"
         android:shadowDy="3"
         android:shadowRadius="3"
-        android:text="Войти"
+        android:text="Зарегистрироваться"
         android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/txt_sign_up1"
+        android:id="@+id/txt_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
@@ -139,13 +141,13 @@
         android:shadowColor="@color/black37"
         android:shadowDy="3"
         android:shadowRadius="3"
-        android:text="Ещё нет аккаунта?"
+        android:text="Уже есть аккаунт?"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="17dp" />
 
     <TextView
-        android:id="@+id/log_reg_txt_sign_up"
+        android:id="@+id/reg_log_txt_sign_up"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -155,11 +157,9 @@
         android:shadowColor="@color/black37"
         android:shadowDy="3"
         android:shadowRadius="3"
-        android:text="Регистрация"
+        android:text="Войти"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="19sp"
         android:textStyle="bold" />
-
-
 </RelativeLayout>
