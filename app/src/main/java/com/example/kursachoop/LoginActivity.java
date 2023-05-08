@@ -1,33 +1,124 @@
 package com.example.kursachoop;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.kursachoop.Model.Users;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
-    private EditText loginInput, loginPasswordInput;
-    private TextView txtRegister;
+    private TextView txtRegister, txtRoot;
+    private EditText phoneInput, passwordInput;
+    private ProgressDialog loadingBar;
+    private String parrentDbName = "Users";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        loadingBar = new ProgressDialog(this);
+        txtRoot = (TextView) findViewById(R.id.root_input);
         loginButton = (Button) findViewById(R.id.login_button_log);
-        loginInput = (EditText) findViewById(R.id.reg_edTxt_phone);
-        loginPasswordInput = (EditText) findViewById(R.id.edTxt_password);
+        phoneInput = (EditText) findViewById(R.id.login_edTxt_phone);
+        passwordInput = (EditText) findViewById(R.id.login_edTxt_password);
         txtRegister = (TextView) findViewById(R.id.log_reg_txt_sign_up);
+
+        txtRoot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent rootIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(rootIntent);
+            }
+        });
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUser();
+            }
+        });
 
         txtRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(registerIntent);
+            }
+        });
+    }
+
+    private void loginUser() {
+        String phone = phoneInput.getText().toString();
+        String password = passwordInput.getText().toString();
+
+        if(TextUtils.isEmpty(phone)){
+            Toast.makeText(this, "Введите номер телефона", Toast.LENGTH_SHORT).show();
+        }
+
+        else if(TextUtils.isEmpty(password)){
+            Toast.makeText(this, "Придумайте пароль", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+            loadingBar.setTitle("Вход в аккаунт");
+            loadingBar.setMessage("Пожалуйста, подождите...");
+            loadingBar.setCanceledOnTouchOutside(false);
+            loadingBar.show();
+
+            ValidateUser(phone, password);
+
+        }
+    }
+
+    private void ValidateUser(String phone, String password) {
+        final DatabaseReference RootRef;
+        RootRef = FirebaseDatabase.getInstance().getReference();
+
+        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.child(parrentDbName).child(phone).exists())
+                {
+                    Users usersData = dataSnapshot.child(parrentDbName).child(phone).getValue(Users.class);
+
+                    if(usersData.getPhone().equals(phone)){
+                        if(usersData.getPassword().equals(password)){
+                            loadingBar.dismiss();
+                            Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
+
+                            Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(homeIntent);
+                        }
+                        else {
+                            loadingBar.dismiss();
+                            Toast.makeText(LoginActivity.this, "Неверный пароль!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+                else {
+                    loadingBar.dismiss();
+                    Toast.makeText(LoginActivity.this, "Аккаунта с номером " + phone + " не существует!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
