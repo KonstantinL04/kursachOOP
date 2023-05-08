@@ -48,33 +48,36 @@
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="21sp" />
+
     <EditText
         android:id="@+id/login_edTxt_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/txt_pc"
-        android:background="@drawable/button_login"
-        android:padding="15dp"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="30dp"
+        android:background="@drawable/button_login"
+        android:hint="Логин или номер телефона"
+        android:padding="15dp"
+        android:phoneNumber="true"
         android:shadowColor="@color/black37"
         android:shadowDy="3"
-        android:shadowRadius="3"
-        android:hint="Логин или номер телефона"/>
+        android:shadowRadius="3" />
 
     <EditText
         android:id="@+id/login_edTxt_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/login_edTxt_phone"
-        android:background="@drawable/button_login"
-        android:padding="15dp"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="15dp"
+        android:background="@drawable/button_login"
+        android:hint="Пароль"
+        android:padding="15dp"
+        android:password="true"
         android:shadowColor="@color/black37"
         android:shadowDy="3"
-        android:shadowRadius="3"
-        android:hint="Пароль"/>
+        android:shadowRadius="3" />
 
     <LinearLayout
         android:id="@+id/linear_check"

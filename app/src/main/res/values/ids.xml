@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="btnAddpc" type="id" />
+    <item name="btnAddCPU" type="id" />
+    <item name="btnAddMotherbrd" type="id" />
+    <item name="btnAddSoundcard" type="id" />
+    <item name="btnAddPower" type="id" />
+    <item name="btnAddHDD" type="id" />
+    <item name="btnAddCooler" type="id" />
+    <item name="btnAddRam" type="id" />
+    <item name="btnAddGPU" type="id" />
+</resources>
