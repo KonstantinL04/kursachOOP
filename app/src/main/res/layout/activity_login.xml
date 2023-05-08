@@ -84,8 +84,8 @@
         android:layout_below="@id/login_edTxt_password"
         >
 
-        <CheckBox
-            android:id="@+id/checkBox"
+        <com.rey.material.widget.CheckBox
+            android:id="@+id/login_checkBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -94,7 +94,9 @@
             android:shadowColor="@color/black37"
             android:shadowDy="3"
             android:shadowRadius="3"
+            android:gravity="center_vertical"
             android:text="Запомнить меня"
+            android:textAllCaps="false"
             android:textColor="@color/white" />
 
         <TextView
