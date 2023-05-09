@@ -6,4 +6,8 @@
     <string name="catalog">Каталог</string>
     <string name="bin">Корзина</string>
     <string name="profile">Профиль</string>
+    <string name="name_product">Наименование товара</string>
+    <string name="product_description">Описание товара</string>
+    <string name="product_price">Стоимость товара</string>
+    <string name="btn_add_new_product">+ Добавить</string>
 </resources>

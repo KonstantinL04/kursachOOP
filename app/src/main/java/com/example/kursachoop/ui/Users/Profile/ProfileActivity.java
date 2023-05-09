@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
@@ -20,13 +20,13 @@ import io.paperdb.Paper;
 
 public class ProfileActivity extends AppCompatActivity {
     private BottomNavigationView nav;
-    private Button btnLogOut;
+    private ImageView btnLogOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        btnLogOut = (Button) findViewById(R.id.button);
+        btnLogOut = (ImageView) findViewById(R.id.button);
 
         nav = findViewById(R.id.nav);
         nav.setSelectedItemId(R.id.profileActivity);

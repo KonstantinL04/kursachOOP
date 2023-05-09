@@ -11,7 +11,8 @@
 
     <item android:id="@+id/binActivity"
         android:title="@string/bin"
-        android:icon="@drawable/bin"/>
+        android:icon="@drawable/bin"
+        />
 
     <item android:id="@+id/profileActivity"
         android:title="@string/profile"
