@@ -6,6 +6,7 @@
     <color name="colorPrimary">#B3CCD6</color>
     <color name="colorPrimaryDark">#527997</color>
     <color name="gradientStart">#D13251</color>
+    <color name="gradientMenuEnd">#A32B6A</color>
     <color name="gradientEnd">#451FAC</color>
     <color name="prim">#00451FAC</color>
 

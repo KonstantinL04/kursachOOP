@@ -14,11 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.Admin.AdminAddNewProductActivity;
 import com.example.kursachoop.Model.Users;
 import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.ui.Admin.AdminCategoryActivity;
-import com.example.kursachoop.ui.Users.HomeActivity;
+import com.example.kursachoop.ui.Users.Home.HomeActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

@@ -1,6 +1,7 @@
 <resources>
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="colorPrimary">@color/gradientStart</item>
-        <item name="colorPrimaryDark">@color/gradientEnd</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/white</item>
+        <item name="statusBarBackground">@drawable/gradient_background</item>
     </style>
 </resources>

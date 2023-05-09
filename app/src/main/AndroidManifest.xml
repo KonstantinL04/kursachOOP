@@ -13,13 +13,22 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".ui.Users.Bin.BinActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ui.Users.Profile.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.Users.Catalog.CatalogActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.Admin.AdminCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Admin.AdminAddNewProductActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Users.HomeActivity"
+            android:name=".ui.Users.Home.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".ui.RegisterActivity"
@@ -28,7 +37,7 @@
             android:name=".ui.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Users.HomeActivity$MainActivity"
+            android:name=".ui.Users.Home.HomeActivity$MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
