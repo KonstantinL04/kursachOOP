@@ -9,4 +9,5 @@
     <item name="btnAddCooler" type="id" />
     <item name="btnAddRam" type="id" />
     <item name="btnAddGPU" type="id" />
+    <item name="btnAddFullpc" type="id" />
 </resources>

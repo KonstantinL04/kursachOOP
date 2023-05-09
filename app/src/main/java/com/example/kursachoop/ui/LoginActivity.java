@@ -17,6 +17,7 @@ import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Admin.AdminAddNewProductActivity;
 import com.example.kursachoop.Model.Users;
 import com.example.kursachoop.Prevalent.Prevalent;
+import com.example.kursachoop.ui.Admin.AdminCategoryActivity;
 import com.example.kursachoop.ui.Users.HomeActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -146,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
                                 loadingBar.dismiss();
                                 Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
 
-                                Intent homeIntent = new Intent(LoginActivity.this, AdminAddNewProductActivity.class);
+                                Intent homeIntent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
                                 startActivity(homeIntent);
                             }
                         }
