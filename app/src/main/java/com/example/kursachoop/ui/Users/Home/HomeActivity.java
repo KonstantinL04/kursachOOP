@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.example.kursachoop.Model.Products;
 import com.example.kursachoop.ViewHolder.ProductViewHolder;
 import com.example.kursachoop.R;
@@ -78,12 +79,16 @@ public class HomeActivity extends AppCompatActivity  {
         super.onStart();
 
         FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef, Products.class).build();
+                .setQuery(ProductsRef.orderByChild("category").equalTo("процессор"), Products.class).build();
+//                .setQuery(ProductsRef, Products.class).build();
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Products model) {
-                Picasso.get().load(model.getImage()).into(holder.imageView);
-                holder.txtProductName.setText(model.getCategory());
+//                Picasso.get().load(model.getImage()).into(holder.imageView);
+                Glide.with(holder.itemView.getContext())
+                        .load(model.getImage())
+                        .into(holder.imageView);
+                holder.txtProductName.setText(model.getPName());
                 holder.txtProductPrice.setText(model.getPrice());
             }
             @NonNull

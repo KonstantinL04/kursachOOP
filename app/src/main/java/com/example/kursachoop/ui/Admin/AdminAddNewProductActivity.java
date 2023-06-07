@@ -108,8 +108,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
 
         productRandomKey = saveCurrentDate + saveCurrentTime;
 
-        StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() +
-                productRandomKey + ".jpg");
+        StorageReference filePath = ProductImageRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
         final UploadTask uploadTask = filePath.putFile(ImageUri);
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -124,22 +123,16 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                 Toast.makeText(AdminAddNewProductActivity.this, "Изображение успешно загружено.", Toast.LENGTH_SHORT).show();
 
-                Task<Uri> uritask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                    @Override
-                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                        if (!task.isSuccessful()){
-                            throw task.getException();
-                        }
-                        downloadImageUrl = filePath.getDownloadUrl().toString();
-                        return filePath.getDownloadUrl();
-                    }
-                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                Task<Uri> downloadUrlTask = filePath.getDownloadUrl();
+                downloadUrlTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
                     public void onComplete(@NonNull Task<Uri> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(AdminAddNewProductActivity.this, "Фото сохранено.", Toast.LENGTH_SHORT).show();
-
+                        if (task.isSuccessful()) {
+                            downloadImageUrl = task.getResult().toString();
                             SaveProductInfoToDatabase();
+                        } else {
+                            String message = task.getException().toString();
+                            Toast.makeText(AdminAddNewProductActivity.this, "Ошибка " + message, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
