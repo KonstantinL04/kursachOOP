@@ -1,13 +1,13 @@
 package com.example.kursachoop.Model;
 
-public class Users {
+public class Admins {
     private String name, phone, password, image;
 
-    public Users(){
+    public Admins(){
 
     }
 
-    public Users(String name, String phone, String password, String image) {
+    public Admins(String name, String phone, String password, String image) {
         this.name = name;
         this.phone = phone;
         this.password = password;

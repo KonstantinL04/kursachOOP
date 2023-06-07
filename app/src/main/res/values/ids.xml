@@ -10,4 +10,10 @@
     <item name="btnAddRam" type="id" />
     <item name="btnAddGPU" type="id" />
     <item name="btnAddFullpc" type="id" />
+    <item name="btnDelCPU" type="id" />
+    <item name="btnDelFullpc" type="id" />
+    <item name="btnDelpc" type="id" />
+    <item name="btnDelMotherbrd" type="id" />
+    <item name="btnDelGPU" type="id" />
+    <item name="btnDelRam" type="id" />
 </resources>

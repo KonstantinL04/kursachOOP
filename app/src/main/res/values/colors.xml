@@ -3,6 +3,7 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black37">#5E000000</color>
+    <color name="black">#000000</color>
     <color name="colorPrimary">#B3CCD6</color>
     <color name="colorPrimaryDark">#527997</color>
     <color name="gradientStart">#D13251</color>
@@ -10,5 +11,7 @@
     <color name="gradientMenuStart">#6A1C80</color>
     <color name="gradientEnd">#451FAC</color>
     <color name="prim">#00451FAC</color>
+    <color name="grey">#BFBFBF</color>
+    <color name="backRelative">#F4F4F4</color>
 
 </resources>

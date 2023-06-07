@@ -2,42 +2,46 @@ package com.example.kursachoop.ui.Users.Home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.ViewGroup;
 
-import com.example.kursachoop.ui.LoginActivity;
-import com.example.kursachoop.Model.Users;
-import com.example.kursachoop.Prevalent.Prevalent;
+import com.example.kursachoop.Model.Products;
+import com.example.kursachoop.ViewHolder.ProductViewHolder;
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.RegisterActivity;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
 import com.example.kursachoop.ui.Users.Catalog.CatalogActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.rey.material.widget.FloatingActionButton;
+import com.squareup.picasso.Picasso;
 
-import io.paperdb.Paper;
+import org.jetbrains.annotations.NotNull;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity  {
     private BottomNavigationView nav;
+    DatabaseReference ProductsRef;
+    private RecyclerView recyclerViewUserHome;
+    RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
+        ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
         nav = findViewById(R.id.nav);
         nav.setSelectedItemId(R.id.homeActivity);
         nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -62,90 +66,38 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        recyclerViewUserHome = findViewById(R.id.recycler_menu);
+        recyclerViewUserHome.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerViewUserHome.setLayoutManager(layoutManager);
     }
 
-    public static class MainActivity extends AppCompatActivity   {
-        private Button btnLogin;
-        private TextView txtRegister;
-        private ProgressDialog loadingBar;
-        private String parrentDbName = "Users";
-        @Override
-        protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-            loadingBar = new ProgressDialog(this);
-            btnLogin = (Button) findViewById(R.id.main_button_log);
-            txtRegister = (TextView) findViewById(R.id.main_txt_sign_up);
-
-            Paper.init(this);
-            btnLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(loginIntent);
-                }
-            });
-            txtRegister.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
-                    startActivity(registerIntent);
-                }
-            });
-
-            String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
-            String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
-
-            if(UserPhoneKey != "" && UserPasswordKey != ""){
-                if(!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)){
-                    ValidateUser(UserPhoneKey, UserPasswordKey);
-                    loadingBar.setTitle("Вход в аккаунт");
-                    loadingBar.setMessage("Пожалуйста, подождите...");
-                    loadingBar.setCanceledOnTouchOutside(false);
-                    loadingBar.show();
-
-                }
+        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
+                .setQuery(ProductsRef, Products.class).build();
+        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Products model) {
+                Picasso.get().load(model.getImage()).into(holder.imageView);
+                holder.txtProductName.setText(model.getCategory());
+                holder.txtProductPrice.setText(model.getPrice());
             }
-        }
-
-        private void ValidateUser(final String phone, final String password) {
-
-            final DatabaseReference RootRef;
-            RootRef = FirebaseDatabase.getInstance().getReference();
-
-            RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    if(dataSnapshot.child(parrentDbName).child(phone).exists())
-                    {
-                        Users usersData = dataSnapshot.child(parrentDbName).child(phone).getValue(Users.class);
-
-                        if(usersData.getPhone().equals(phone)){
-                            if(usersData.getPassword().equals(password)){
-                                loadingBar.dismiss();
-                                Toast.makeText(MainActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
-
-                                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
-                                startActivity(homeIntent);
-                            }
-                            else {
-                                loadingBar.dismiss();
-                            }
-                        }
-                    }
-                    else {
-                        loadingBar.dismiss();
-                        Toast.makeText(MainActivity.this, "Аккаунта с номером " + phone + " не существует!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-        }
+            @NonNull
+            @NotNull
+            @Override
+            public ProductViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler,parent,false);
+                ProductViewHolder holder = new ProductViewHolder(view);
+                return holder;
+            }
+        };
+        recyclerViewUserHome.setAdapter(adapter);
+        adapter.startListening();
     }
+
+
 }

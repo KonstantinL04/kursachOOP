@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="5dp"
+    android:background="@drawable/card_item"
+    app:cardCornerRadius="15dp">
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/card_item">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/recImage"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginHorizontal="27dp"
+            android:padding="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/process"/>
+
+        <TextView
+            android:id="@+id/recPrice"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/recImage"
+            android:paddingHorizontal="5dp"
+            android:text="8 299 ₽"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/recPname"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Процессор AMD Ryzen 5 3600 OEM"
+            android:paddingHorizontal="5dp"
+            android:textSize="10sp"
+            android:layout_below="@id/recPrice"
+            />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

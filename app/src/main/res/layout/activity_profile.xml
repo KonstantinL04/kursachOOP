@@ -16,7 +16,7 @@
         android:shadowColor="@color/black37"
         android:shadowDy="5"
         android:shadowRadius="7"
-        android:text="Профиль"
+        android:text="@string/profile_text"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
@@ -24,14 +24,14 @@
         android:layout_marginTop="70dp"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/button_login"
-        android:layout_marginHorizontal="5dp">
+        android:background="@drawable/button_login">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
+
             android:src="@drawable/camera"
             android:layout_marginBottom="30dp"
             android:layout_gravity="center|bottom"
@@ -47,19 +47,17 @@
             android:shadowDy="5"
             android:shadowRadius="7"
             android:layout_gravity="bottom|center"
-            android:text="Имя пользователя"
             android:textStyle="bold" />
     </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="200dp"
         android:layout_marginBottom="60dp"
-        android:layout_marginHorizontal="5dp"
         android:background="@drawable/button_login"
-        android:scrollbars="vertical"
-        >
+        android:scrollbars="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -81,10 +79,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/gradient_bottom_menu"
+        android:background="@color/white"
         app:menu="@menu/bottom_nav"
         app:labelVisibilityMode="labeled"
         app:itemIconTint="@drawable/item_selector"
-        app:itemTextColor="@color/white"
-        app:itemRippleColor="@color/white"/>
+        android:outlineAmbientShadowColor="@color/black37"/>
 </RelativeLayout>

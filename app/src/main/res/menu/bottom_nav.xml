@@ -3,7 +3,9 @@
 
     <item android:id="@+id/homeActivity"
         android:title="@string/home"
-        android:icon="@drawable/home"/>
+        android:icon="@drawable/home"
+        android:iconTint="@color/black"
+        />
 
     <item android:id="@+id/catalogActivity"
         android:title="@string/catalog"
