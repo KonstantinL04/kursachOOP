@@ -1,87 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Users.Profile.ProfileActivity"
     android:background="@drawable/gradient_background"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.Users.Profile.ProfileActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/appbar"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:shadowColor="@color/black37"
-        android:shadowDy="5"
-        android:shadowRadius="7"
-        android:text="@string/profile_text"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-    <FrameLayout
-        android:layout_marginTop="70dp"
-        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:shadowColor="@color/black37"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Профиль"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/log_out_foreground" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
         android:layout_height="120dp"
-        android:background="@drawable/button_login">
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_login"
+        android:orientation="vertical"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_image"
             android:layout_width="80dp"
             android:layout_height="80dp"
-
-            android:src="@drawable/camera"
-            android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center|bottom"
+            android:layout_marginTop="10dp"
             android:contentDescription="Navigation_header"
-            app:civ_border_width="2dp"
+            android:src="@drawable/avatarka"
             app:civ_border_color="@color/black37"
-            />
+            app:civ_border_width="2dp" />
+
         <TextView
             android:id="@+id/profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/profile_image"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
             android:shadowColor="@color/black37"
             android:shadowDy="5"
             android:shadowRadius="7"
-            android:layout_gravity="bottom|center"
+            android:text="Константин"
+            android:textColor="@color/black"
+            android:textSize="16sp"
             android:textStyle="bold" />
-    </FrameLayout>
+    </RelativeLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_menu"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="200dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/button_login"
-        android:scrollbars="vertical">
-
-    </androidx.recyclerview.widget.RecyclerView>
-
-    <ImageView
-        android:id="@+id/button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <RelativeLayout
+        android:id="@+id/orderslist"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="5dp"
-        android:layout_alignParentEnd="true"
-        android:src="@drawable/log_out_foreground"
-        android:background="@drawable/button_login"/>
+        android:background="@drawable/button_login"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:shadowColor="@color/black37"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Список заказов"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="7dp"
+            android:src="@drawable/baseline_arrow_forward_ios_24"
 
+            />
+    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:menu="@menu/bottom_nav"
-        app:labelVisibilityMode="labeled"
+        android:outlineAmbientShadowColor="@color/black37"
         app:itemIconTint="@drawable/item_selector"
-        android:outlineAmbientShadowColor="@color/black37"/>
-</RelativeLayout>
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav" />
+</androidx.constraintlayout.widget.ConstraintLayout>
