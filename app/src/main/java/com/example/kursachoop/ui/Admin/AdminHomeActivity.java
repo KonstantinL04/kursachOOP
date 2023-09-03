@@ -7,80 +7,132 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.kursachoop.Interface.ItemClickListener;
+import com.example.kursachoop.Model.Catalog;
+import com.example.kursachoop.Model.Category;
 import com.example.kursachoop.Model.Products;
 import com.example.kursachoop.R;
+import com.example.kursachoop.ViewHolder.CatalogViewHolder;
+import com.example.kursachoop.ViewHolder.CategoryViewHolder;
 import com.example.kursachoop.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.material.imageview.ShapeableImageView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AdminHomeActivity extends AppCompatActivity {
-    private Button addProduct, delProduct;
-    DatabaseReference ProductsRef;
+
+public class AdminHomeActivity extends AppCompatActivity implements ItemClickListener {
+    private static final String TAG = "ADMIN";
     private RecyclerView recyclerViewAdminHome;
+    private Button addCategoryButton;
+    private Button delCategoryButton;
+    private DatabaseReference categoriesRef;
     RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
-        ProductsRef = FirebaseDatabase.getInstance().getReference().child("процессор");
-        addProduct = findViewById(R.id.add_product);
-        delProduct = findViewById(R.id.del_product);
 
-        addProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent addProductIntent = new Intent(AdminHomeActivity.this, AdminCategoryActivity.class);
-                startActivity(addProductIntent);
-            }
-        });
-        delProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent delProductIntent = new Intent(AdminHomeActivity.this, AdminDelProductActivity.class);
-                startActivity(delProductIntent);
-            }
-        });
+        categoriesRef = FirebaseDatabase.getInstance().getReference().child("Catalog");
+
         recyclerViewAdminHome = findViewById(R.id.recycler_menu_admin);
         recyclerViewAdminHome.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
         recyclerViewAdminHome.setLayoutManager(layoutManager);
+
+        addCategoryButton = findViewById(R.id.add_category);
+        delCategoryButton = findViewById(R.id.del_category);
+        addCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseReference newCategoryRef = categoriesRef.push(); // Создаем новый уникальный ключ
+                String newCategoryId = newCategoryRef.getKey(); // Получаем ID новой категории
+
+                // Создаем объект каталога с названием по умолчанию и установленным счетчиком в 0
+                Catalog newCatalog = new Catalog(newCategoryId, "Название по умолчанию", 0);
+
+                // Сохраняем новую запись в каталоге в Firebase Realtime Database
+                newCategoryRef.setValue(newCatalog);
+
+                // Выводим сообщение об успешном добавлении
+                Toast.makeText(AdminHomeActivity.this, "Новая категория добавлена", Toast.LENGTH_SHORT).show();
+            }
+        });
+        delCategoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<Products> options = new FirebaseRecyclerOptions.Builder<Products>()
-                .setQuery(ProductsRef, Products.class).build();
-        FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter = new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
+        FirebaseRecyclerOptions<Catalog> options =
+                new FirebaseRecyclerOptions.Builder<Catalog>()
+                        .setQuery(
+                                categoriesRef.orderByChild("" +
+                                        "Catalog"), Catalog.class)
+                        .build();
+
+        FirebaseRecyclerAdapter<Catalog, CatalogViewHolder> adapter = new FirebaseRecyclerAdapter<Catalog, CatalogViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull @NotNull ProductViewHolder holder, int i, @NonNull @NotNull Products model) {
-                Picasso.get().load(model.getImage()).into(holder.imageView);
-                holder.txtProductName.setText(model.getCategory());
-                holder.txtProductPrice.setText(model.getPrice());
+            protected void onBindViewHolder(@NonNull CatalogViewHolder holder, int i, @NonNull Catalog model) {
+                Log.d(TAG, "onBindViewHolder: " + model.getCategoryName());
+                holder.catalogsName.setText(model.getCategoryName());
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(AdminHomeActivity.this, AdminCategoryActivity.class);
+                        intent.putExtra("categoryId", model.getCategoryId());
+                        startActivity(intent);
+                    }
+                });
             }
+
+
             @NonNull
-            @NotNull
             @Override
-            public ProductViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler,parent,false);
-                ProductViewHolder holder = new ProductViewHolder(view);
+            public CatalogViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                Log.d(TAG, "onCreateViewHolder");
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_catalog, parent, false);
+                CatalogViewHolder holder = new CatalogViewHolder(view);
                 return holder;
             }
         };
+
         recyclerViewAdminHome.setAdapter(adapter);
         adapter.startListening();
     }
 
+
+
+    @Override
+    public void onClick(View view, int position, boolean isLongClick) {
+        Catalog catalog = (Catalog) view.getTag();
+        Intent intent = new Intent(AdminHomeActivity.this, AdminCategoryActivity.class);
+        intent.putExtra("categoryId", catalog.getCategoryId());
+        startActivity(intent);
+    }
 }

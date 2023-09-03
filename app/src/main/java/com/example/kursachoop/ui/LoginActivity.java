@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtRegister, txtRoot;
     private EditText phoneInput, passwordInput;
     private ProgressDialog loadingBar;
-    private String parrentDbName = "Users";
+    private String parrentDbName = "Admins";
     private CheckBox checkBoxRememberMe;
     private TextView AdminLink, NotAdminLink;
 

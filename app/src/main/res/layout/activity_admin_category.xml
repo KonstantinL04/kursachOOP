@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,375 +8,462 @@
     android:background="@drawable/gradient_background"
     tools:context=".ui.Admin.AdminCategoryActivity">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:shadowColor="@color/black37"
-        android:shadowDy="5"
-        android:shadowRadius="7"
-        android:text="Выберите категорию"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-    <FrameLayout
-        android:id="@+id/Lin_fullpc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="55dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/img_fullpc"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/fullpc" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Готовые сборки"/>
-
-        <Button
-            android:id="@id/btnAddFullpc"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:text="+ Добавить"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="11sp" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_pc"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
+        android:background="@color/white"
         android:orientation="horizontal"
-        android:layout_below="@id/Lin_fullpc">
-
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/img_pc"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/pc" />
+            android:id="@+id/admin_base_back_home"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="15dp"
+            android:src="@drawable/baseline_arrow_back_ios_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Корпус"/>
+            android:layout_toEndOf="@+id/admin_base_back_home"
+            android:padding="8dp"
+            android:shadowColor="@color/black37"
+            android:shadowDy="2"
+            android:shadowRadius="3"
+            android:text="Категории товаров"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <Button
-            android:id="@id/btnAddpc"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:text="+ Добавить"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="11sp" />
-    </FrameLayout>
 
-    <FrameLayout
-        android:id="@+id/Lin_cpu"
+    </RelativeLayout>
+
+    <ScrollView
+
+        android:layout_width="407dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_admin_category"
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:background="@drawable/button_main"
+                android:padding="3dp"
+                >
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_pc"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/img_cpu"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/cpu" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Процессор"/>
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <Button
-            android:id="@id/btnAddCPU"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:text="+ Добавить"
-            android:textColor="@color/white"
-            android:textSize="11sp" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_morherbrd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_cpu"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/img_morherbrd"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/motherbrd" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/add_product"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Материнская плата"/>
-        <Button
-            android:id="@id/btnAddMotherbrd"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/button_login"
+            android:padding="5dp"
             android:text="+ Добавить"
-            android:textSize="11sp"
-            android:textColor="@color/white" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_gpu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_morherbrd"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/img_gpu"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/gpu" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Видеокарта"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
         <Button
-            android:id="@id/btnAddGPU"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:textSize="11sp"
-            android:text="+ Добавить"
-            android:textColor="@color/white" />
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_ram"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_gpu"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/img_ram"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/ram" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/del_product"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Оперативная память"/>
+            android:background="@drawable/button_login"
+            android:padding="5dp"
+            android:text="- Удалить"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/add_product" />
+    </RelativeLayout>
 
-        <Button
-            android:id="@id/btnAddRam"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:textSize="11sp"
-            android:text="+ Добавить"
-            android:textColor="@color/white" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_cooler"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_ram"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <ImageView
-            android:id="@+id/img_cooler"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/cooler" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Система охлаждения"/>
-
-        <Button
-            android:id="@id/btnAddCooler"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:textSize="11sp"
-            android:text="+ Добавить"
-            android:textColor="@color/white" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_hdd"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_cooler"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:shadowColor="@color/black37"-->
+<!--        android:shadowDy="5"-->
+<!--        android:shadowRadius="7"-->
+<!--        android:text="Выберите категорию"-->
+<!--        android:textColor="@color/white"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold" />-->
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_fullpc"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="55dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
 
 
-        <ImageView
-            android:id="@+id/img_hdd"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/hdd"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/img_fullpc"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/fullpc" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Хранение данных"/>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Готовые сборки"/>-->
 
-        <Button
-            android:id="@id/btnAddHDD"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:textSize="11sp"
-            android:text="+ Добавить"
-            android:textColor="@color/white" />
-    </FrameLayout>
+<!--        <Button-->
+<!--            android:id="@id/btnAddFullpc"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="11sp" />-->
+<!--    </FrameLayout>-->
 
-    <FrameLayout
-        android:id="@+id/Lin_power"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_hdd"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
-
-
-        <ImageView
-            android:id="@+id/img_power"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/power" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Блок питания"/>
-
-        <Button
-            android:id="@id/btnAddPower"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:textSize="11sp"
-            android:text="+ Добавить"
-            android:textColor="@color/white" />
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/Lin_soundcard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Lin_power"
-        android:layout_marginHorizontal="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/button_login"
-        android:orientation="horizontal">
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_pc"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_below="@id/Lin_fullpc">-->
 
 
-        <ImageView
-            android:id="@+id/img_soundcard"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:src="@drawable/soundcard" />
+<!--        <ImageView-->
+<!--            android:id="@+id/img_pc"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/pc" />-->
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_gravity="start|center"
-            android:text="Звуковая карта"/>
-        <Button
-            android:id="@id/btnAddSoundcard"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:layout_gravity="end|center"
-            android:layout_marginEnd="5dp"
-            android:background="@drawable/listitem"
-            android:textSize="11sp"
-            android:text="+ Добавить"
-            android:textColor="@color/white"/>
-    </FrameLayout>
-</RelativeLayout>
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Корпус"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddpc"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textAlignment="center"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="11sp" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_cpu"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_pc"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_cpu"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/cpu" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Процессор"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddCPU"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="11sp" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_morherbrd"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_cpu"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_morherbrd"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/motherbrd" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Материнская плата"/>-->
+<!--        <Button-->
+<!--            android:id="@id/btnAddMotherbrd"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textSize="11sp"-->
+<!--            android:textColor="@color/white" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_gpu"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_morherbrd"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_gpu"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/gpu" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Видеокарта"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddGPU"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white" />-->
+
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_ram"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_gpu"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_ram"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/ram" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Оперативная память"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddRam"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_cooler"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_ram"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_cooler"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/cooler" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Система охлаждения"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddCooler"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_hdd"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_cooler"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_hdd"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/hdd"/>-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Хранение данных"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddHDD"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_power"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_hdd"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_power"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/power" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Блок питания"/>-->
+
+<!--        <Button-->
+<!--            android:id="@id/btnAddPower"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white" />-->
+<!--    </FrameLayout>-->
+
+<!--    <FrameLayout-->
+<!--        android:id="@+id/Lin_soundcard"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@id/Lin_power"-->
+<!--        android:layout_marginHorizontal="4dp"-->
+<!--        android:layout_marginTop="4dp"-->
+<!--        android:background="@drawable/button_login"-->
+<!--        android:orientation="horizontal">-->
+
+
+<!--        <ImageView-->
+<!--            android:id="@+id/img_soundcard"-->
+<!--            android:layout_width="45dp"-->
+<!--            android:layout_height="45dp"-->
+<!--            android:src="@drawable/soundcard" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_gravity="start|center"-->
+<!--            android:text="Звуковая карта"/>-->
+<!--        <Button-->
+<!--            android:id="@id/btnAddSoundcard"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end|center"-->
+<!--            android:layout_marginEnd="5dp"-->
+<!--            android:background="@drawable/listitem"-->
+<!--            android:textSize="11sp"-->
+<!--            android:text="+ Добавить"-->
+<!--            android:textColor="@color/white"/>-->
+<!--    </FrameLayout>-->
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->

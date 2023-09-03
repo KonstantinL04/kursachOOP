@@ -1,28 +1,38 @@
 package com.example.kursachoop.Model;
 
 public class Products {
-    private String pName, description, price, image, category, pid, date, time;
-    public Products(){
 
-    }
+    private String pName, description, price, image, pid, date, time, categoryId;;
+//    private boolean availability;
+    public Products(){}
 
-    public Products(String pName, String description, String price, String image, String category,
+    public Products(String categoryId,String pName, String description, String price, String image,
                     String pid, String date, String time) {
+        this.categoryId = categoryId;
         this.pName = pName;
         this.description = description;
         this.price = price;
         this.image = image;
-        this.category = category;
         this.pid = pid;
         this.date = date;
         this.time = time;
+//        this.availability = availability;
+    }
+
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getPName() {
         return pName;
     }
 
-    public void setPname(String pName) {
+    public void setPName(String pName) {
         this.pName = pName;
     }
 
@@ -50,17 +60,17 @@ public class Products {
         this.image = image;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
     public String getPid() {
         return pid;
     }
+
+//    public boolean isAvailability() {
+//        return availability;
+//    }
+
+//    public void setAvailability(boolean availability) {
+//        this.availability = availability;
+//    }
 
     public void setPid(String pid) {
         this.pid = pid;
