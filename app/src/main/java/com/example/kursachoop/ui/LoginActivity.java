@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -13,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kursachoop.Model.Admins;
 import com.example.kursachoop.R;
 import com.example.kursachoop.Model.Users;
 import com.example.kursachoop.Prevalent.Prevalent;
@@ -33,7 +36,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtRegister, txtRoot;
     private EditText phoneInput, passwordInput;
     private ProgressDialog loadingBar;
-    private String parrentDbName = "Admins";
+    private String parrentDbName = "Users";
+
     private CheckBox checkBoxRememberMe;
     private TextView AdminLink, NotAdminLink;
 
@@ -100,11 +104,11 @@ public class LoginActivity extends AppCompatActivity {
         String password = passwordInput.getText().toString();
 
         if(TextUtils.isEmpty(phone)){
-            Toast.makeText(this, "Введите номер телефона", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Введите номер телефона...", Toast.LENGTH_SHORT).show();
         }
 
         else if(TextUtils.isEmpty(password)){
-            Toast.makeText(this, "Придумайте пароль", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Введите пароль...", Toast.LENGTH_SHORT).show();
         }
 
         else {
@@ -119,52 +123,92 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void ValidateUser(String phone, String password) {
-        if(checkBoxRememberMe.isChecked()){
-                Paper.book().write(Prevalent.UserPhoneKey, phone);
-                Paper.book().write(Prevalent.UserPasswordKey, password);
+        if(checkBoxRememberMe.isChecked() && parrentDbName.equals("Users")){
+            Paper.book().write(Prevalent.UserPhoneKey, phone);
+            Paper.book().write(Prevalent.UserPasswordKey, password);
+        }else if(checkBoxRememberMe.isChecked() && parrentDbName.equals("Admins")) {
+            Paper.book().write(Prevalent.AdminPhoneKey, phone);
+            Paper.book().write(Prevalent.AdminPasswordKey, password);
         }
 
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
-
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Users");
+        DatabaseReference adminsRef = rootRef.child("Admins");
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child(parrentDbName).child(phone).exists())
-                {
-                    Users usersData = dataSnapshot.child(parrentDbName).child(phone).getValue(Users.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(phone).exists()) {
+                    Users usersData = snapshot.child(phone).getValue(Users.class);
 
-                    if(usersData.getPhone().equals(phone)){
-                        if(usersData.getPassword().equals(password)){
-                            if(parrentDbName.equals("Users")){
-                                loadingBar.dismiss();
-                                Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
+                    if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
+                        if (parrentDbName.equals("Users")){
+                            Toast.makeText(LoginActivity.this, "Успешная авторизация", Toast.LENGTH_SHORT).show();
+                            loadingBar.dismiss();
+                            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("parrentDbName", parrentDbName);
+                            editor.apply();
 
-                                Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
-                                startActivity(homeIntent);
-                            } else if (parrentDbName.equals("Admins")) {
-                                loadingBar.dismiss();
-                                Toast.makeText(LoginActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
-
-                                Intent homeIntent = new Intent(LoginActivity.this, AdminHomeActivity.class);
-                                startActivity(homeIntent);
-                            }
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(intent);
                         }
                         else {
                             loadingBar.dismiss();
-                            Toast.makeText(LoginActivity.this, "Неверный пароль!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Пользователь с номером " + phone + " не существует", Toast.LENGTH_SHORT).show();
                         }
+                        // Пользователь успешно авторизован
+
+                    } else {
+                        loadingBar.dismiss();
+                        Toast.makeText(LoginActivity.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else {
-                    loadingBar.dismiss();
-                    Toast.makeText(LoginActivity.this, "Аккаунта с номером " + phone + " не существует!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Проверяем в узле "Admins"
+                    adminsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.child(phone).exists()) {
+                                Admins adminsData = snapshot.child(phone).getValue(Admins.class);
+
+                                if (adminsData.getPhone().equals(phone) && adminsData.getPassword().equals(password)) {
+                                    if (parrentDbName.equals("Admins")){
+                                        // Пользователь успешно авторизован как администратор
+                                        Toast.makeText(LoginActivity.this, "Успешная авторизация", Toast.LENGTH_SHORT).show();
+                                        loadingBar.dismiss();
+                                        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        editor.putString("parrentDbName", parrentDbName);
+                                        editor.apply();
+
+                                        Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        loadingBar.dismiss();
+                                        Toast.makeText(LoginActivity.this, "Админа с номером " + phone + " не существует", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    loadingBar.dismiss();
+                                    Toast.makeText(LoginActivity.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                loadingBar.dismiss();
+                                Toast.makeText(LoginActivity.this, "Пользователь с номером " + phone + " не существует", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            loadingBar.dismiss();
+                            Toast.makeText(LoginActivity.this, "Ошибка: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                loadingBar.dismiss();
+                Toast.makeText(LoginActivity.this, "Ошибка: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

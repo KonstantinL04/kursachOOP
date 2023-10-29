@@ -2,6 +2,7 @@ package com.example.kursachoop.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,9 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kursachoop.Model.Admins;
 import com.example.kursachoop.Model.Users;
 import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
+import com.example.kursachoop.ui.Admin.AdminHomeActivity;
 import com.example.kursachoop.ui.Users.Home.HomeActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -56,53 +59,102 @@ public class MainActivity extends AppCompatActivity {
 
         String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
         String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);
+        String AdminPhoneKey = Paper.book().read(Prevalent.AdminPhoneKey);
+        String AdminPasswordKey = Paper.book().read(Prevalent.AdminPasswordKey);
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        parrentDbName = sharedPreferences.getString("parrentDbName", "");
 
-        if(UserPhoneKey != "" && UserPasswordKey != ""){
-            if(!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)){
+        if(UserPhoneKey != null && UserPasswordKey != null) {
+            if (!TextUtils.isEmpty(UserPhoneKey) && !TextUtils.isEmpty(UserPasswordKey)) {
                 ValidateUser(UserPhoneKey, UserPasswordKey);
                 loadingBar.setTitle("Вход в аккаунт");
                 loadingBar.setMessage("Пожалуйста, подождите...");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
-
+            }
+        }
+        else if(AdminPhoneKey != null && AdminPasswordKey != null){
+            if(!TextUtils.isEmpty(AdminPhoneKey) && !TextUtils.isEmpty(AdminPasswordKey)){
+                ValidateUser(AdminPhoneKey, AdminPasswordKey);
+                loadingBar.setTitle("Вход в аккаунт");
+                loadingBar.setMessage("Пожалуйста, подождите...");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
             }
         }
     }
 
     private void ValidateUser(final String phone, final String password) {
 
-        final DatabaseReference RootRef;
-        RootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = rootRef.child("Users");
+        DatabaseReference adminsRef = rootRef.child("Admins");
 
-        RootRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.child(parrentDbName).child(phone).exists())
-                {
-                    Users usersData = dataSnapshot.child(parrentDbName).child(phone).getValue(Users.class);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.child(phone).exists()) {
+                    Users usersData = snapshot.child(phone).getValue(Users.class);
 
-                    if(usersData.getPhone().equals(phone)){
-                        if(usersData.getPassword().equals(password)){
+                    if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
+                        if (parrentDbName.equals("Users")){
+                            // Пользователь успешно авторизован
+                            Toast.makeText(MainActivity.this, "Успешная авторизация", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
-                            Toast.makeText(MainActivity.this, "Успешный вход!", Toast.LENGTH_SHORT).show();
 
-                            Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
-                            startActivity(homeIntent);
-                        }
-                        else {
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                        }else {
                             loadingBar.dismiss();
+                            Toast.makeText(MainActivity.this, "Пользователь с номером " + phone + " не существует", Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        loadingBar.dismiss();
+                        Toast.makeText(MainActivity.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
                     }
-                }
-                else {
-                    loadingBar.dismiss();
-                    Toast.makeText(MainActivity.this, "Аккаунта с номером " + phone + " не существует!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Проверяем в узле "Admins"
+                    adminsRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.child(phone).exists()) {
+                                Admins adminsData = snapshot.child(phone).getValue(Admins.class);
+
+                                if (adminsData.getPhone().equals(phone) && adminsData.getPassword().equals(password)) {
+                                    if (parrentDbName.equals("Admins")){
+                                        // Пользователь успешно авторизован как администратор
+                                        Toast.makeText(MainActivity.this, "Успешная авторизация", Toast.LENGTH_SHORT).show();
+                                        loadingBar.dismiss();
+
+                                        Intent intent = new Intent(MainActivity.this, AdminHomeActivity.class);
+                                        startActivity(intent);
+                                    } else {
+                                        loadingBar.dismiss();
+                                        Toast.makeText(MainActivity.this, "Админа с номером " + phone + " не существует", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    loadingBar.dismiss();
+                                    Toast.makeText(MainActivity.this, "Неверный пароль", Toast.LENGTH_SHORT).show();
+                                }
+                            } else {
+                                loadingBar.dismiss();
+                                Toast.makeText(MainActivity.this, "Пользователь с номером " + phone + " не существует", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            loadingBar.dismiss();
+                            Toast.makeText(MainActivity.this, "Ошибка: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                loadingBar.dismiss();
+                Toast.makeText(MainActivity.this, "Ошибка: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

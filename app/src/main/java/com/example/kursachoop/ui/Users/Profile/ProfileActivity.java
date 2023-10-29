@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
+import com.example.kursachoop.ui.LoginActivity;
 import com.example.kursachoop.ui.MainActivity;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
 import com.example.kursachoop.ui.Users.Catalog.CatalogActivity;
@@ -77,7 +78,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Paper.book().destroy();
 
-                Intent logOutIntent = new Intent(ProfileActivity.this, MainActivity.class);
+                Intent logOutIntent = new Intent(ProfileActivity.this, LoginActivity.class);
                 startActivity(logOutIntent);
             }
         });

@@ -24,6 +24,9 @@ import com.example.kursachoop.R;
 import com.example.kursachoop.ViewHolder.CatalogViewHolder;
 import com.example.kursachoop.ViewHolder.CategoryViewHolder;
 import com.example.kursachoop.ViewHolder.ProductViewHolder;
+import com.example.kursachoop.ui.LoginActivity;
+import com.example.kursachoop.ui.MainActivity;
+import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -36,12 +39,14 @@ import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import io.paperdb.Paper;
+
 
 public class AdminHomeActivity extends AppCompatActivity implements ItemClickListener {
     private static final String TAG = "ADMIN";
     private RecyclerView recyclerViewAdminHome;
     private Button addCategoryButton;
-    private Button delCategoryButton;
+    private Button delCategoryButton, LogOutBtn;
     private DatabaseReference categoriesRef;
     RecyclerView.LayoutManager layoutManager;
 
@@ -57,7 +62,7 @@ public class AdminHomeActivity extends AppCompatActivity implements ItemClickLis
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
         recyclerViewAdminHome.setLayoutManager(layoutManager);
-
+        LogOutBtn = findViewById(R.id.logout_button);
         addCategoryButton = findViewById(R.id.add_category);
         delCategoryButton = findViewById(R.id.del_category);
         addCategoryButton.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +85,16 @@ public class AdminHomeActivity extends AppCompatActivity implements ItemClickLis
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        LogOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Paper.book().destroy();
+
+                Intent logOutIntent = new Intent(AdminHomeActivity.this, LoginActivity.class);
+                startActivity(logOutIntent);
             }
         });
 

@@ -7,6 +7,17 @@
     tools:context=".ui.Admin.AdminHomeActivity"
     android:background="@drawable/gradient_background">
 
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/button_login"
+        android:padding="5dp"
+        android:text="Выход" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,35 +30,49 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold" />
-    <Button
-        android:id="@+id/add_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_login"
-        android:text="+ Добавить"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="150dp"/>
-    <Button
-        android:id="@+id/del_category"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_login"
-        android:text="- Удалить"
-        android:padding="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="270dp"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menu_admin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
+        android:layout_below="@id/logout_button"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="5dp"
         android:background="@drawable/button_main"
-        android:scrollbars="vertical"
-        >
+        android:scrollbars="vertical" />
 
+    <Button
+        android:id="@+id/add_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_login"
+        android:padding="5dp"
+        android:text="+ Добавить" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <Button
+        android:id="@+id/del_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@id/search_category"
+        android:background="@drawable/button_login"
+        android:padding="5dp"
+        android:text="- Удалить" />
+
+    <Button
+        android:id="@+id/search_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toEndOf="@id/add_category"
+        android:background="@drawable/button_login"
+        android:padding="5dp"
+        android:text="Поиск" />
 
 </RelativeLayout>
