@@ -29,16 +29,20 @@ public class CatalogActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.homeActivity) {
+                    item.setIcon(R.drawable.home_sel);
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.catalogActivity) {
+                    item.setIcon(R.drawable.catalog_sel);
                     return true;
                 } else if (itemId == R.id.binActivity) {
+                    item.setIcon(R.drawable.bin_sel);
                     startActivity(new Intent(getApplicationContext(), BinActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.profileActivity) {
+                    item.setIcon(R.drawable.profile_sel);
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     finish();
                     return true;

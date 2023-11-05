@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Users.Profile.SettingsActivity"
-    android:background="@drawable/gradient_background">
+    android:background="@color/grey">
         <LinearLayout
             android:id="@+id/closeTxtBtn"
             android:layout_width="wrap_content"
@@ -38,40 +38,6 @@
                 android:text="Отмена"/>
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/profileChangeTxtBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="4dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_alignParentEnd="true"
-            android:background="@drawable/button_login"
-            android:paddingEnd="5dp"
-            >
-            <ImageView
-                android:id="@+id/img2"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:src="@drawable/done"
-                android:layout_gravity="center|center_horizontal"
-
-                />
-            <TextView
-                android:id="@+id/text2"
-                android:layout_toEndOf="@+id/img"
-
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|center_horizontal"
-                android:textColor="@color/black"
-                android:shadowColor="@color/black37"
-                android:shadowDy="3"
-                android:shadowRadius="3"
-                android:text="Сохранить"/>
-        </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"

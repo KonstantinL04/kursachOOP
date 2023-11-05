@@ -6,36 +6,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.Users.Catalog.CatalogActivity"
-    android:background="@drawable/gradient_background">
+    android:background="@color/grey">
 
     <RelativeLayout
         android:id="@+id/appbar"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/gradientStart"
         android:orientation="horizontal"
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
+        <EditText
+            android:id="@+id/find_edTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:shadowColor="@color/black37"
-            android:shadowDy="2"
-            android:shadowRadius="3"
-            android:text="Каталог"
-            android:padding="8dp"
-            android:textColor="@color/black"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_login"
+            android:drawableLeft="@drawable/search"
+            android:drawablePadding="5dp"
+            android:hint="Искать в 1R"
+            android:padding="10dp"
+            android:textColorHint="#CDCDCD" />
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,8 +52,7 @@
                 android:id="@+id/recycler_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="70dp"
-                android:layout_marginBottom="60dp"
+                android:layout_margin="10dp"
                 android:background="@drawable/button_login"
                 android:scrollbars="vertical"
                 >

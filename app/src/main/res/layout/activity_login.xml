@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/gradientStart"
     tools:context=".ui.LoginActivity">
 
     <ImageView
@@ -23,9 +23,6 @@
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/exo_2_bold"
-        android:shadowColor="@color/black37"
-        android:shadowDy="5"
-        android:shadowRadius="3"
         android:singleLine="true"
         android:text="Магазин"
         android:textAlignment="center"
@@ -40,9 +37,6 @@
         android:layout_below="@+id/txt_shop"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/exo_2_bold"
-        android:shadowColor="@color/black37"
-        android:shadowDy="5"
-        android:shadowRadius="3"
         android:text="компьютеров"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -52,32 +46,26 @@
     <EditText
         android:id="@+id/login_edTxt_phone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/txt_pc"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/button_login"
         android:hint="Номер телефона"
         android:padding="15dp"
-        android:phoneNumber="true"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3" />
+        android:phoneNumber="true"/>
 
     <EditText
         android:id="@+id/login_edTxt_password"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_below="@+id/login_edTxt_phone"
         android:layout_marginHorizontal="15dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_login"
         android:hint="Пароль"
         android:padding="15dp"
-        android:password="true"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3" />
+        android:password="true"/>
 
     <LinearLayout
         android:id="@+id/linear_check"
@@ -94,9 +82,6 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             style="@style/Material.Drawable.CheckBox"
-            android:shadowColor="@color/black37"
-            android:shadowDy="3"
-            android:shadowRadius="3"
             android:gravity="center_vertical"
             android:text="Запомнить меня"
             android:textAllCaps="false"
@@ -107,9 +92,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:shadowColor="@color/black37"
-            android:shadowDy="3"
-            android:shadowRadius="3"
             android:layout_marginEnd="40dp"
             android:text="Забыли пароль?"
             android:textAlignment="textEnd"
@@ -126,10 +108,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="150dp"
         android:background="@drawable/button_login"
-        android:backgroundTintMode="src_in"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3"
+
         android:text="Войти"
         android:textSize="20sp"/>
 
@@ -141,9 +120,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3"
         android:text="Ещё нет аккаунта?"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -157,9 +133,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="70dp"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3"
         android:text="Регистрация"
         android:textAlignment="center"
         android:textColor="@color/white"

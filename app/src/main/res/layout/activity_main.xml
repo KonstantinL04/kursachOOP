@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_background"
+    android:background="@color/gradientStart"
     tools:context=".ui.MainActivity">
 
     <ImageView
@@ -24,9 +24,7 @@
         android:layout_below="@+id/logo"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/exo_2_bold"
-        android:shadowColor="@color/black37"
-        android:shadowDy="5"
-        android:shadowRadius="3"
+
         android:singleLine="true"
         android:text="Магазин"
         android:textAlignment="center"
@@ -41,9 +39,7 @@
         android:layout_below="@+id/txt_shop"
         android:layout_centerHorizontal="true"
         android:fontFamily="@font/exo_2_bold"
-        android:shadowColor="@color/black37"
-        android:shadowDy="5"
-        android:shadowRadius="3"
+
         android:text="компьютеров"
         android:textAlignment="center"
         android:textAllCaps="true"
@@ -60,10 +56,6 @@
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="150dp"
         android:background="@drawable/button_login"
-        android:backgroundTintMode="src_in"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3"
         android:text="Войти"
         android:textSize="20sp"/>
 
@@ -76,9 +68,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="100dp"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3"
         android:text="Ещё нет аккаунта?"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -92,9 +81,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="15dp"
         android:layout_marginBottom="70dp"
-        android:shadowColor="@color/black37"
-        android:shadowDy="3"
-        android:shadowRadius="3"
         android:text="Регистрация"
         android:textAlignment="center"
         android:textColor="@color/white"

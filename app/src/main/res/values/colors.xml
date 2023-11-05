@@ -11,7 +11,7 @@
     <color name="gradientMenuStart">#6A1C80</color>
     <color name="gradientEnd">#451FAC</color>
     <color name="prim">#00451FAC</color>
-    <color name="grey">#BFBFBF</color>
+    <color name="grey">#F1F1F1</color>
     <color name="backRelative">#F4F4F4</color>
 
 </resources>

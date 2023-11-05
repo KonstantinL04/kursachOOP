@@ -24,7 +24,7 @@
             android:name=".ui.Admin.AdminHomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Users.Profile.SettingsActivity"
+            android:name=".ui.Users.Profile.ProfileSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Users.Bin.BinActivity"

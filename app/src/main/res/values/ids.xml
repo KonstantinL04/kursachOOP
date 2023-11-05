@@ -16,4 +16,5 @@
     <item name="btnDelMotherbrd" type="id" />
     <item name="btnDelGPU" type="id" />
     <item name="btnDelRam" type="id" />
+    <item name="horizon1" type="id" />
 </resources>

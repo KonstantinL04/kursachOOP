@@ -34,8 +34,8 @@ import org.jetbrains.annotations.NotNull;
 public class HomeActivity extends AppCompatActivity  {
     private BottomNavigationView nav;
     DatabaseReference ProductsRef;
-    private RecyclerView recyclerViewUserHome;
-    RecyclerView.LayoutManager layoutManager;
+//    private RecyclerView recyclerViewUserHome;
+//    RecyclerView.LayoutManager layoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,16 +50,20 @@ public class HomeActivity extends AppCompatActivity  {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemId = item.getItemId();
                 if (itemId == R.id.homeActivity) {
+                    item.setIcon(R.drawable.home_sel);
                     return true;
                 } else if (itemId == R.id.catalogActivity) {
+                    item.setIcon(R.drawable.catalog_sel);
                     startActivity(new Intent(getApplicationContext(), CatalogActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.binActivity) {
+                    item.setIcon(R.drawable.bin_sel);
                     startActivity(new Intent(getApplicationContext(), BinActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.profileActivity) {
+                    item.setIcon(R.drawable.profile_sel);
                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                     finish();
                     return true;
@@ -68,10 +72,10 @@ public class HomeActivity extends AppCompatActivity  {
             }
         });
 
-        recyclerViewUserHome = findViewById(R.id.recycler_menu);
-        recyclerViewUserHome.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyclerViewUserHome.setLayoutManager(layoutManager);
+//        recyclerViewUserHome = findViewById(R.id.recycler_menu);
+//        recyclerViewUserHome.setHasFixedSize(true);
+//        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+//        recyclerViewUserHome.setLayoutManager(layoutManager);
     }
 
     @Override
@@ -102,8 +106,8 @@ public class HomeActivity extends AppCompatActivity  {
                 return holder;
             }
         };
-        recyclerViewUserHome.setAdapter(adapter);
-        adapter.startListening();
+//        recyclerViewUserHome.setAdapter(adapter);
+//        adapter.startListening();
     }
 
 
