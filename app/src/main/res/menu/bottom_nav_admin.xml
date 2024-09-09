@@ -7,11 +7,6 @@
         android:iconTint="@color/black"
         />
 
-    <item android:id="@+id/binActivity"
-        android:title="@string/bin"
-        android:icon="@drawable/bin"
-        />
-
     <item android:id="@+id/profileActivity"
         android:title="@string/profile"
         android:icon="@drawable/profile"/>

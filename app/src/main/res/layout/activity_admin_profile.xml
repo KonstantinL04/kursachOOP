@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey"
-    android:orientation="vertical"
-    tools:context=".ui.Users.Profile.ProfileActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:id="@+id/appbar"
@@ -31,13 +27,13 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/button"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            android:src="@drawable/log_out_foreground" />-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/button"-->
+        <!--            android:layout_width="50dp"-->
+        <!--            android:layout_height="50dp"-->
+        <!--            android:layout_alignParentEnd="true"-->
+        <!--            android:scaleType="centerCrop"-->
+        <!--            android:src="@drawable/log_out_foreground" />-->
     </RelativeLayout>
 
     <ScrollView
@@ -113,34 +109,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="5dp"
                 >
-                <RelativeLayout
-                    android:id="@+id/my_orders"
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:background="@drawable/button_login"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp"
-                    android:padding="5dp">
-
-                    <ImageView
-                        android:id="@+id/my_orders_image"
-                        android:layout_width="35dp"
-                        android:layout_height="35dp"
-                        android:layout_centerVertical="true"
-                        android:src="@drawable/orders_home"
-                        android:layout_margin="5dp"
-                        />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/my_orders_image"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:shadowColor="@color/black37"
-                        android:text="Заказы"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/about_it"
@@ -190,5 +158,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav" />
+        app:menu="@menu/bottom_nav_admin" />
 </androidx.constraintlayout.widget.ConstraintLayout>

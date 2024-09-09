@@ -8,26 +8,30 @@
     app:cardCornerRadius="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
         android:background="@drawable/card_item">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/categoriesImage"
+            android:id="@+id/categoryImage"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginHorizontal="5dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/cpu"/>
+            android:padding="10dp"
+            android:src="@drawable/camera"/>
 
 
         <TextView
-            android:id="@+id/categoriesName"
-            android:layout_width="match_parent"
+            android:id="@+id/categoryName"
+            android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:layout_toEndOf="@id/categoriesImage"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:layout_toEndOf="@id/categoryImage"
             android:paddingHorizontal="5dp"
             android:paddingTop="15dp"
-            android:text="Процессоры"
+            android:text="Название категории"
             android:textSize="12sp" />
 
 

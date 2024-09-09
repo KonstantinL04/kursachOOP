@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Admin.AdminAddNewProductActivity"
-    android:background="@color/grey">
+    android:background="@color/grey"
+    tools:context=".ui.Admin.AdminAddCategoryActivity">
+
     <RelativeLayout
         android:id="@+id/appbar"
         android:layout_width="0dp"
@@ -33,7 +35,7 @@
             android:shadowColor="@color/black37"
             android:shadowDy="2"
             android:shadowRadius="3"
-            android:text="Добавление товара"
+            android:text="Добавление категории"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -85,62 +87,6 @@
                 android:shadowDy="3"
                 android:shadowRadius="3" />
 
-            <EditText
-                android:id="@+id/product_name3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/button_login"
-                android:hint="Бренд*"
-                android:inputType="textMultiLine"
-                android:padding="10dp"
-                android:shadowDy="3"
-                android:shadowRadius="3" />
-
-            <EditText
-                android:id="@+id/product_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/button_login"
-                android:hint="@string/product_description"
-                android:inputType="textMultiLine"
-                android:padding="10dp"
-                android:shadowDy="3"
-                android:shadowRadius="3" />
-
-            <EditText
-                android:id="@+id/product_price"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/button_login"
-                android:hint="@string/product_price"
-                android:inputType="textMultiLine"
-                android:padding="10dp"
-                android:shadowDy="3"
-                android:shadowRadius="3" />
-
-            <EditText
-                android:id="@+id/product_name2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/button_login"
-                android:hint="Наличие*"
-                android:inputType="textMultiLine"
-                android:padding="10dp"
-                android:shadowDy="3"
-                android:shadowRadius="3" />
-
             <Button
                 android:id="@+id/btn_add_new_product"
                 android:layout_width="match_parent"
@@ -157,6 +103,6 @@
 
         </LinearLayout>
     </ScrollView>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+

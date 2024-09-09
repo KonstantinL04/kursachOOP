@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,142 +7,167 @@
     tools:context=".ui.RegisterActivity"
     android:background="@color/gradientStart">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/app_logo_png"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="10dp"
-        android:layout_centerHorizontal="true"/>
-
-    <TextView
-        android:id="@+id/txt_shop"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/exo_2_bold"
-        android:singleLine="true"
-        android:text="Магазин"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="34sp" />
-
-    <TextView
-        android:id="@+id/txt_pc"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/txt_shop"
-        android:layout_centerHorizontal="true"
-        android:fontFamily="@font/exo_2_bold"
-        android:text="компьютеров"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="@color/white"
-        android:textSize="21sp" />
-
-    <EditText
-        android:id="@+id/reg_edTxt_nameLogin"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/txt_pc"
-        android:background="@drawable/button_login"
-        android:padding="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="30dp"
-        android:hint="Имя пользователя"/>
-
-    <EditText
-        android:id="@+id/reg_edTxt_phone"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/reg_edTxt_nameLogin"
-        android:background="@drawable/button_login"
-        android:padding="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
-
-        android:hint="Номер телефона"/>
-    <EditText
-        android:id="@+id/reg_edTxt_password"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/reg_edTxt_phone"
-        android:background="@drawable/button_login"
-        android:padding="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
-        android:hint="Пароль"/>
-    <EditText
-        android:id="@+id/reg_edTxt_password_repeat"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/reg_edTxt_password"
-        android:background="@drawable/button_login"
-        android:padding="15dp"
-        android:layout_marginHorizontal="15dp"
-        android:layout_marginTop="15dp"
-        android:hint="Повторите пароль"/>
-
-    <LinearLayout
-        android:id="@+id/linear_check"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@id/reg_edTxt_password_repeat"
-        >
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="10dp"
-            style="@style/Material.Drawable.CheckBox"
-            android:text="Нажимая, вы соглашаетесь на обработку персональных данных."
-            android:textColor="@color/white" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/app_logo_png" />
 
-    <Button
-        android:id="@+id/reg_button_log"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="150dp"
-        android:background="@drawable/button_login"
-        android:text="Зарегистрироваться"
-        android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/txt_shop"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/exo_2_bold"
+                android:singleLine="true"
+                android:text="Магазин"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="34sp" />
 
-    <TextView
-        android:id="@+id/txt_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
-        android:text="Уже есть аккаунт?"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
+            <TextView
+                android:id="@+id/txt_pc"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_shop"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/exo_2_bold"
+                android:text="компьютеров"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="21sp" />
 
-    <TextView
-        android:id="@+id/reg_log_txt_sign_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="70dp"
-        android:text="Войти"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="19sp"
-        android:textStyle="bold" />
-</RelativeLayout>
+            <EditText
+                android:id="@+id/reg_edTxt_nameLogin"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/txt_pc"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/button_login"
+                android:hint="Ваше имя*"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/reg_edTxt_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/reg_edTxt_nameLogin"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/button_login"
+                android:hint="Номер телефона*"
+                android:inputType="phone"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/reg_edTxt_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/reg_edTxt_phone"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:inputType="textPassword"
+                android:background="@drawable/button_login"
+                android:hint="Пароль*"
+                android:padding="15dp" />
+
+            <EditText
+                android:id="@+id/reg_edTxt_password_repeat"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/reg_edTxt_password"
+                android:layout_marginHorizontal="15dp"
+                android:layout_marginTop="15dp"
+                android:inputType="textPassword"
+                android:background="@drawable/button_login"
+                android:hint="Повторите пароль*"
+                android:padding="15dp" />
+
+            <RelativeLayout
+                android:id="@+id/linear_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/reg_edTxt_password_repeat"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkBox"
+                    style="@style/Material.Drawable.CheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Нажимая, вы соглашаетесь на обработку персональных данных."
+                    android:textColor="@color/white" />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/reg_button_log"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_check"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/button_login"
+                android:text="Зарегистрироваться"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txt_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/reg_button_log"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Уже есть аккаунт?"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/reg_log_txt_sign_up"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_sign_up"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="30dp"
+                android:text="Войти"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

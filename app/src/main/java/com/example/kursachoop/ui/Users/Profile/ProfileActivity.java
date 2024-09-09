@@ -16,7 +16,6 @@ import com.example.kursachoop.R;
 import com.example.kursachoop.ui.LoginActivity;
 import com.example.kursachoop.ui.MainActivity;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
-import com.example.kursachoop.ui.Users.Catalog.CatalogActivity;
 import com.example.kursachoop.ui.Users.Home.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -51,11 +50,6 @@ public class ProfileActivity extends AppCompatActivity {
                 if (itemId == R.id.homeActivity) {
                     item.setIcon(R.drawable.home_sel);
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
-                    return true;
-                } else if (itemId == R.id.catalogActivity) {
-                    item.setIcon(R.drawable.catalog_sel);
-                    startActivity(new Intent(getApplicationContext(), CatalogActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.binActivity) {

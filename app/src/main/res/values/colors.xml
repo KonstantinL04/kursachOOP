@@ -13,5 +13,6 @@
     <color name="prim">#00451FAC</color>
     <color name="grey">#F1F1F1</color>
     <color name="backRelative">#F4F4F4</color>
+    <color name="red">#E64747</color>
 
 </resources>

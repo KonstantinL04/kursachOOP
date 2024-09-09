@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.Users.Catalog.CatalogActivity;
 import com.example.kursachoop.ui.Users.Home.HomeActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -31,11 +30,6 @@ public class BinActivity extends AppCompatActivity {
                 if (itemId == R.id.homeActivity) {
                     item.setIcon(R.drawable.home_sel);
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
-                    return true;
-                } else if (itemId == R.id.catalogActivity) {
-                    item.setIcon(R.drawable.catalog_sel);
-                    startActivity(new Intent(getApplicationContext(), CatalogActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.binActivity) {

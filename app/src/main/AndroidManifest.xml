@@ -36,7 +36,7 @@
             android:name=".ui.Users.Catalog.CatalogActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.Admin.AdminCategoryActivity"
+            android:name=".ui.Admin.AdminAddCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".ui.Admin.AdminAddNewProductActivity"

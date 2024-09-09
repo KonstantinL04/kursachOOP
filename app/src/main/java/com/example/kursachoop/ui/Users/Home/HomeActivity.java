@@ -18,7 +18,6 @@ import com.example.kursachoop.Model.Products;
 import com.example.kursachoop.ViewHolder.ProductViewHolder;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
-import com.example.kursachoop.ui.Users.Catalog.CatalogActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -51,11 +50,6 @@ public class HomeActivity extends AppCompatActivity  {
                 int itemId = item.getItemId();
                 if (itemId == R.id.homeActivity) {
                     item.setIcon(R.drawable.home_sel);
-                    return true;
-                } else if (itemId == R.id.catalogActivity) {
-                    item.setIcon(R.drawable.catalog_sel);
-                    startActivity(new Intent(getApplicationContext(), CatalogActivity.class));
-                    finish();
                     return true;
                 } else if (itemId == R.id.binActivity) {
                     item.setIcon(R.drawable.bin_sel);
