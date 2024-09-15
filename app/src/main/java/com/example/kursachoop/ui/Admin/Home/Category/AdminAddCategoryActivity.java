@@ -1,4 +1,4 @@
-package com.example.kursachoop.ui.Admin;
+package com.example.kursachoop.ui.Admin.Home.Category;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -101,11 +101,11 @@ public class AdminAddCategoryActivity extends AppCompatActivity {
     }
 
     // Метод для сохранения категории в Realtime Database
-    private void saveCategoryToDatabase(String categoryId, String categoryName, String imageUrl) {
+    private void saveCategoryToDatabase(String categoryId, String categoryName, String image) {
         HashMap<String, Object> categoryData = new HashMap<>();
         categoryData.put("id", categoryId);
         categoryData.put("name", categoryName);
-        categoryData.put("imageUrl", imageUrl);
+        categoryData.put("imageUrl", image);
 
         categoriesRef.child(categoryId).updateChildren(categoryData)
                 .addOnCompleteListener(task -> {

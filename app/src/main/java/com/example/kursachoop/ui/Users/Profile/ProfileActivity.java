@@ -7,22 +7,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.LoginActivity;
-import com.example.kursachoop.ui.MainActivity;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
 import com.example.kursachoop.ui.Users.Home.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.squareup.picasso.Picasso;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-import io.paperdb.Paper;
 
 public class ProfileActivity extends AppCompatActivity {
     private BottomNavigationView nav;

@@ -3,34 +3,35 @@ package com.example.kursachoop.Model;
 public class Product {
     private String id;
     private String name;
-    private double price;
-    private int stock;
-    private String imageUrl;
-    private String brand;
+    private String price;
+    private String image;
     private String description;
+    private String brand;
+    private String availability;  // Поле для количества товара
 
-    // Пустой конструктор необходим для Firebase
+    // Конструктор
     public Product() {
     }
 
-    public Product(String id, String name, double price, int stock, String imageUrl, String brand, String description) {
+    public Product(String id, String name, String price, String image, String description, String brand, String availability) {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.stock = stock;
-        this.imageUrl = imageUrl;
-        this.brand = brand;
+        this.image = image;
         this.description = description;
+        this.brand = brand;
+        this.availability = availability;
     }
 
-    public String getId() {
+
+    // Геттеры и сеттеры
+    public String getId(){
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(String id){
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
@@ -39,28 +40,28 @@ public class Product {
         this.name = name;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
-    public int getStock() {
-        return stock;
+    public String getImage() {
+        return image;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getDescription() {
+        return description;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getBrand() {
@@ -71,11 +72,12 @@ public class Product {
         this.brand = brand;
     }
 
-    public String getDescription() {
-        return description;
+    public String getAvailability() {
+        return availability;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setAvailability(String availability) {
+        this.availability = availability;
     }
+    
 }

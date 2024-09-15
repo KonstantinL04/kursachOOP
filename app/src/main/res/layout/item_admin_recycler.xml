@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/card_item">
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <ImageView
             android:id="@+id/recImage"
             android:layout_width="90dp"
             android:layout_height="90dp"
@@ -59,7 +59,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/recPrice2"
+            android:id="@+id/recAvailability"
             android:layout_width="wrap_content"
             android:layout_height="20dp"
             android:paddingHorizontal="5dp"

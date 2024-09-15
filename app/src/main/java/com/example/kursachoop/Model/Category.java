@@ -31,11 +31,11 @@ public class Category {
         this.name = name;
     }
 
-    public String getImage() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImage(String imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 }
