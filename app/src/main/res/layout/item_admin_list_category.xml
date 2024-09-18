@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:layout_marginEnd="5dp"
-            android:layout_toStartOf="@+id/editProduct"
+            android:layout_toStartOf="@+id/editCategory"
             android:layout_toEndOf="@id/categoryImageAdmin"
             android:paddingHorizontal="5dp"
             android:paddingTop="15dp"
@@ -35,7 +35,7 @@
             android:textSize="12sp" />
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/editProduct"
+            android:id="@+id/editCategory"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginHorizontal="5dp"

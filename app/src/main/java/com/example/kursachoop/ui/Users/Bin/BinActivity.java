@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.Users.Home.HomeActivity;
+import com.example.kursachoop.ui.Users.Home.Category.HomeActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;

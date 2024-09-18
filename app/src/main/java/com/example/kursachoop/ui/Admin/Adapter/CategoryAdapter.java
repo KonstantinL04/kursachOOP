@@ -1,4 +1,5 @@
 package com.example.kursachoop.ui.Admin.Adapter;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,13 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.kursachoop.Interface.ItemClickListener;
 import com.example.kursachoop.Model.Category;
 import com.example.kursachoop.R;
+import com.example.kursachoop.ui.Admin.Home.Category.AdminEditCategoryActivity;
+import com.example.kursachoop.ui.Admin.Home.Category.AdminHomeActivity;
 import com.example.kursachoop.ui.Admin.Home.Products.AdminProductsActivity;
 import com.squareup.picasso.Picasso;
 
@@ -22,6 +23,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     private Context context;
     private List<Category> categoryList;
     private ItemClickListener itemClickListener;
+    private String categoryId;
 
     public CategoryAdapter(Context context, List<Category> categoryList, ItemClickListener itemClickListener) {
         this.context = context;
@@ -49,6 +51,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             intent.putExtra("categoryName", category.getName());
             context.startActivity(intent);
         });
+
+        holder.editCategoryBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(context, AdminEditCategoryActivity.class);
+            intent.putExtra("categoryId", category.getId());
+            context.startActivity(intent);
+        });
+
+        holder.deleteCategoryBtn.setOnClickListener(v -> {
+            new AlertDialog.Builder(context)
+                    .setTitle("Удалить категорию")
+                    .setMessage("Вы уверены, что хотите удалить эту категорию?")
+                    .setPositiveButton("Да", (dialog, which) -> {
+                        // Вызов функции удаления
+                        if (context instanceof AdminHomeActivity) {
+                            ((AdminHomeActivity) context).deleteCategory(category.getId(), position);
+                        }
+                    })
+                    .setNegativeButton("Нет", null)
+                    .show();
+        });
     }
 
     @Override
@@ -57,13 +79,15 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
-        ImageView categoryImage;
+        ImageView categoryImage, editCategoryBtn, deleteCategoryBtn;
         TextView categoryName;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryImage = itemView.findViewById(R.id.categoryImageAdmin);
             categoryName = itemView.findViewById(R.id.categoryNameAdmin);
+            editCategoryBtn = itemView.findViewById(R.id.editCategory);
+            deleteCategoryBtn = itemView.findViewById(R.id.delCategory);
         }
     }
 }

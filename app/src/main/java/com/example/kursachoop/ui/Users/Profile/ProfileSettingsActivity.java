@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.LoginActivity;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
-import com.example.kursachoop.ui.Users.Home.HomeActivity;
+import com.example.kursachoop.ui.Users.Home.Category.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
