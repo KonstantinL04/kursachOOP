@@ -108,8 +108,11 @@ public class AdminProductsActivity extends AppCompatActivity implements ItemClic
                     if (product != null) {
                         productList.add(product);
                     }
+                    else {
+                        Log.e(TAG, "Product is null");
+                    }
                 }
-                productAdapter = new ProductAdapter(AdminProductsActivity.this, productList);
+                productAdapter = new ProductAdapter(AdminProductsActivity.this, productList, categoryId);
                 recyclerViewProducts.setAdapter(productAdapter);
             }
 

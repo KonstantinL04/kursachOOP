@@ -85,7 +85,7 @@
             app:layout_constraintEnd_toStartOf="@+id/delProduct"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.imageview.ShapeableImageView
+        <ImageView
             android:id="@+id/delProduct"
             android:layout_width="45dp"
             android:layout_height="45dp"
