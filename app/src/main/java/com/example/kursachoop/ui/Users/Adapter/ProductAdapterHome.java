@@ -71,7 +71,7 @@ public class ProductAdapterHome extends RecyclerView.Adapter<ProductAdapterHome.
                     holder.addToCartButton.setBackgroundResource(R.drawable.btn_in_bin);
                     holder.addToCartButton.setEnabled(false);
                 } else {
-                    holder.addToCartButton.setText("Добавить в корзину");
+                    holder.addToCartButton.setText("В корзину");
                     holder.addToCartButton.setBackgroundResource(R.drawable.btn_buy);
                     holder.addToCartButton.setEnabled(true);
                 }
@@ -127,6 +127,7 @@ public class ProductAdapterHome extends RecyclerView.Adapter<ProductAdapterHome.
         cartItem.put("id", product.getId());
         cartItem.put("name", product.getName());
         cartItem.put("price", product.getPrice());
+        cartItem.put("image", product.getImage());
         cartItem.put("quantity", 1);  // Начальное количество — 1
         cartItem.put("availableQuantity", product.getAvailability());
 

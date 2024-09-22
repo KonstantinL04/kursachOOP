@@ -67,7 +67,9 @@
                 android:background="@drawable/button_login"
                 android:hint="Ваше имя*"
                 android:inputType="text"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:maxLength="50"
+                />
 
             <EditText
                 android:id="@+id/reg_edTxt_phone"
@@ -91,7 +93,8 @@
                 android:inputType="textPassword"
                 android:background="@drawable/button_login"
                 android:hint="Пароль*"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:maxLength="50"/>
 
             <EditText
                 android:id="@+id/reg_edTxt_password_repeat"
@@ -103,7 +106,8 @@
                 android:inputType="textPassword"
                 android:background="@drawable/button_login"
                 android:hint="Повторите пароль*"
-                android:padding="15dp" />
+                android:padding="15dp"
+                android:maxLength="50"/>
 
             <RelativeLayout
                 android:id="@+id/linear_check"

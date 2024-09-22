@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.Users.Bin.BinActivity;
+import com.example.kursachoop.ui.Users.Cart.CartActivity;
 import com.example.kursachoop.ui.Users.Home.Category.HomeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -58,31 +58,15 @@ public class ProfileActivity extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.binActivity) {
                     item.setIcon(R.drawable.bin_sel);
-                    startActivity(new Intent(getApplicationContext(), BinActivity.class));
+                    startActivity(new Intent(getApplicationContext(), CartActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.profileActivity) {
                     item.setIcon(R.drawable.profile_sel);
-//                    userNameTextView.setText(Prevalent.currentOnlineUser.getName());
                     return true;
                 }
                 return false;
             }
         });
-
-//        btnLogOut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Paper.book().destroy();
-//
-//                Intent logOutIntent = new Intent(ProfileActivity.this, LoginActivity.class);
-//                startActivity(logOutIntent);
-//            }
-//        });
-
-
-//        Picasso.get () .load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
-
     }
 }

@@ -15,7 +15,7 @@ import com.example.kursachoop.Interface.ItemClickListener;
 import com.example.kursachoop.Model.Category;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Users.Adapter.CategoryAdapterHome;
-import com.example.kursachoop.ui.Users.Bin.BinActivity;
+import com.example.kursachoop.ui.Users.Cart.CartActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
                     return true;
                 } else if (itemId == R.id.binActivity) {
                     item.setIcon(R.drawable.bin_sel);
-                    startActivity(new Intent(getApplicationContext(), BinActivity.class));
+                    startActivity(new Intent(getApplicationContext(), CartActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.profileActivity) {

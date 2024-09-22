@@ -31,13 +31,6 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-<!--        <ImageView-->
-<!--            android:id="@+id/button"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_alignParentEnd="true"-->
-<!--            android:scaleType="centerCrop"-->
-<!--            android:src="@drawable/log_out_foreground" />-->
     </RelativeLayout>
 
     <ScrollView

@@ -10,16 +10,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kursachoop.Interface.ItemClickListener;
 import com.example.kursachoop.Model.Product;
-import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Users.Adapter.ProductAdapterHome;
-import com.example.kursachoop.ui.Users.Bin.BinActivity;
+import com.example.kursachoop.ui.Users.Cart.CartActivity;
 import com.example.kursachoop.ui.Users.Home.Category.HomeActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -79,7 +77,7 @@ public class ProductsHomeActivity extends AppCompatActivity implements ItemClick
                     return true;
                 } else if (itemId == R.id.binActivity) {
                     item.setIcon(R.drawable.bin_sel);
-                    startActivity(new Intent(getApplicationContext(), BinActivity.class));
+                    startActivity(new Intent(getApplicationContext(), CartActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.profileActivity) {

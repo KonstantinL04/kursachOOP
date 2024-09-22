@@ -10,10 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.kursachoop.Model.Product;
 import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.Users.Bin.BinActivity;
+import com.example.kursachoop.ui.Users.Cart.CartActivity;
 import com.example.kursachoop.ui.Users.Home.Category.HomeActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -87,7 +86,7 @@ public class CardProductActivity extends AppCompatActivity {
                     return true;
                 } else if (itemId == R.id.binActivity) {
                     item.setIcon(R.drawable.bin_sel);
-                    startActivity(new Intent(getApplicationContext(), BinActivity.class));
+                    startActivity(new Intent(getApplicationContext(), CartActivity.class));
                     finish();
                     return true;
                 } else if (itemId == R.id.profileActivity) {
@@ -122,13 +121,13 @@ public class CardProductActivity extends AppCompatActivity {
         addToCartButton.setOnClickListener(v -> {
             if (isInCart) {
                 // Если товар уже в корзине, открываем активность корзины
-                Intent intent = new Intent(CardProductActivity.this, BinActivity.class);
+                Intent intent = new Intent(CardProductActivity.this, CartActivity.class);
                 startActivity(intent);
             } else {
                 if(availability != null) {
                     int availabilityInt = Integer.parseInt(availability);
                     if (availabilityInt > 0) {
-                        addToCart(productId, name, price, availabilityInt);
+                        addToCart(productId, name, price, imageUrl,availabilityInt);
                     } else {
                         Toast.makeText(CardProductActivity.this, "Товара нет в наличии", Toast.LENGTH_SHORT).show();
                     }
@@ -148,7 +147,7 @@ public class CardProductActivity extends AppCompatActivity {
         }
     }
 
-    private void addToCart(String productId, String productName, String productPrice, int availableQuantity) {
+    private void addToCart(String productId, String productName, String productPrice, String productImage ,int availableQuantity) {
         DatabaseReference cartRef = FirebaseDatabase.getInstance().getReference().child("Cart");
 
         // Используем телефон текущего пользователя из Prevalent
@@ -160,6 +159,7 @@ public class CardProductActivity extends AppCompatActivity {
         cartItem.put("id", productId);
         cartItem.put("name", productName);
         cartItem.put("price", productPrice);
+        cartItem.put("image", productImage);
         cartItem.put("quantity", 1);  // Начальное количество — 1
         cartItem.put("availableQuantity", availableQuantity);
 
