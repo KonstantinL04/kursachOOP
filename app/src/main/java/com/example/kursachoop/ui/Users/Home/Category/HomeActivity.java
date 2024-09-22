@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.kursachoop.Interface.ItemClickListener;
@@ -16,6 +17,7 @@ import com.example.kursachoop.Model.Category;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Users.Adapter.CategoryAdapterHome;
 import com.example.kursachoop.ui.Users.Cart.CartActivity;
+import com.example.kursachoop.ui.Users.Profile.OrdersActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -35,20 +37,25 @@ public class HomeActivity extends AppCompatActivity implements ItemClickListener
     private DatabaseReference categoriesRef;
     private List<Category> categoryList = new ArrayList<>();
     private CategoryAdapterHome categoryAdapterHome;
-
+    private RelativeLayout orders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         recyclerViewHome = findViewById(R.id.recycler_category_home);
-
+        orders = findViewById(R.id.orders);
         recyclerViewHome.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerViewHome.setLayoutManager(layoutManager);
         categoriesRef = FirebaseDatabase.getInstance().getReference().child("categories");
         categoryAdapterHome = new CategoryAdapterHome(this, categoryList, this);
         recyclerViewHome.setAdapter(categoryAdapterHome);
+
+        orders.setOnClickListener(v -> {
+            Intent Intent = new Intent(HomeActivity.this, OrdersActivity.class);
+            startActivity(Intent);
+        });
 
         loadCategories();
 

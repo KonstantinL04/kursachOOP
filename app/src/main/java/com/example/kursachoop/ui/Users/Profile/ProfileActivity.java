@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.kursachoop.Prevalent.Prevalent;
@@ -22,6 +23,7 @@ public class ProfileActivity extends AppCompatActivity {
     private BottomNavigationView nav;
     private LinearLayout btn_settings;
     private TextView userNameTextView, phoneTextView;
+    private RelativeLayout orders;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,40 +35,41 @@ public class ProfileActivity extends AppCompatActivity {
         btn_settings = (LinearLayout) findViewById(R.id.btn_settings);
         userNameTextView = findViewById(R.id.profileName);
         phoneTextView = findViewById(R.id.profilePhone);
+        orders = findViewById(R.id.orders);
+
         nav = findViewById(R.id.nav);
         nav.setSelectedItemId(R.id.profileActivity);
 
         userNameTextView.setText(userName);
         phoneTextView.setText(userPhone);
 
-        btn_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent settingIntent = new Intent(ProfileActivity.this, ProfileSettingsActivity.class);
-                startActivity(settingIntent);
-            }
+        orders.setOnClickListener(v -> {
+            Intent Intent = new Intent(ProfileActivity.this, OrdersActivity.class);
+            startActivity(Intent);
         });
 
-        nav.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                int itemId = item.getItemId();
-                if (itemId == R.id.homeActivity) {
-                    item.setIcon(R.drawable.home_sel);
-                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                    finish();
-                    return true;
-                } else if (itemId == R.id.binActivity) {
-                    item.setIcon(R.drawable.bin_sel);
-                    startActivity(new Intent(getApplicationContext(), CartActivity.class));
-                    finish();
-                    return true;
-                } else if (itemId == R.id.profileActivity) {
-                    item.setIcon(R.drawable.profile_sel);
-                    return true;
-                }
-                return false;
+        btn_settings.setOnClickListener(v -> {
+            Intent settingIntent = new Intent(ProfileActivity.this, ProfileSettingsActivity.class);
+            startActivity(settingIntent);
+        });
+
+        nav.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.homeActivity) {
+                item.setIcon(R.drawable.home_sel);
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.binActivity) {
+                item.setIcon(R.drawable.bin_sel);
+                startActivity(new Intent(getApplicationContext(), CartActivity.class));
+                finish();
+                return true;
+            } else if (itemId == R.id.profileActivity) {
+                item.setIcon(R.drawable.profile_sel);
+                return true;
             }
+            return false;
         });
     }
 }

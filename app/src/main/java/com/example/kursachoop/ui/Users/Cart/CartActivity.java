@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,7 +136,8 @@ public class CartActivity extends AppCompatActivity {
         // Логика оформления заказа
         // Например, можно передать данные заказа в новое активити для подтверждения
         Intent intent = new Intent(this, CheckoutActivity.class);
-        intent.putExtra("totalPrice", totalPrice);  // Передаем общую сумму
+        intent.putExtra("totalPrice", totalPrice);
+        intent.putExtra("cartList", (Serializable) cartList);
         startActivity(intent);
     }
 

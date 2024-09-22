@@ -1,6 +1,8 @@
 package com.example.kursachoop.Model;
 
-public class Cart {
+import java.io.Serializable;
+
+public class Cart implements Serializable {
     private String id;
     private String name;
     private String price;
@@ -27,6 +29,7 @@ public class Cart {
     public void setId(String id){
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
@@ -58,11 +61,12 @@ public class Cart {
     public void setAvailableQuantity(String availableQuantity) {
         this.availableQuantity = availableQuantity;
     }
+
     public int getQuantity() {
         return quantity;
     }
+
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
 }

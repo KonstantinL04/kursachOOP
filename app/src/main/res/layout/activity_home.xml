@@ -17,34 +17,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:id="@+id/profile_image"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
             android:layout_gravity="start"
-            android:layout_marginTop="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginVertical="15dp"
             android:contentDescription="Navigation_header"
             android:src="@drawable/app_logo_png"
             app:civ_border_color="@color/black37"
             app:civ_border_width="2dp" />
 
-        <EditText
-            android:id="@+id/find_edTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profile_image"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/button_login"
-            android:drawableLeft="@drawable/search"
-            android:drawablePadding="5dp"
-            android:hint="Искать в 1R"
-            android:inputType="text"
-            android:padding="10dp"
-            android:textColorHint="#CDCDCD" />
     </RelativeLayout>
 
     <ScrollView
@@ -66,263 +53,7 @@
                 android:padding="10dp">
 
             </androidx.recyclerview.widget.RecyclerView>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="10dp"
-                    android:scrollbars="none">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
 
-                        <RelativeLayout
-                            android:id="@+id/cpu"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:layout_marginEnd="5dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_marginVertical="5dp"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/cpu_image"
-                                android:layout_width="40dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/cpuu"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/cpu_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Процессоры"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/gpu"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/gpu_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/gpu_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/gpu_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Видеокарты"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/motherbrd"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/motherbrd_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/mortherbrd_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/motherbrd_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Материнские платы"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/ram"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/ram_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/ram_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/ram_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Оперативная память"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/power"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/power_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/power_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/power_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Блоки питания"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/systembox"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/systembox_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/systembox_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/systembox_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Корпусы"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/ssd_home"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_margin="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp">
-
-                            <ImageView
-                                android:id="@+id/ssd_home_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/ssd_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/ssd_home_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Накопители"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-                        <RelativeLayout
-                            android:id="@+id/perephirals_home"
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:layout_marginEnd="15dp"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginVertical="5dp"
-                            android:background="@drawable/button_login"
-                            android:orientation="horizontal"
-                            android:padding="5dp"
-                            >
-
-                            <ImageView
-                                android:id="@+id/perephirals_image"
-                                android:layout_width="60dp"
-                                android:layout_height="60dp"
-                                android:layout_centerHorizontal="true"
-                                android:src="@drawable/perephiral_home"
-
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/perephirals_image"
-                                android:layout_centerHorizontal="true"
-                                android:shadowColor="@color/black37"
-                                android:text="Периферия"
-                                android:textAlignment="center"
-                                android:textColor="@color/black"
-                                android:textSize="13sp" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                </HorizontalScrollView>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -332,7 +63,7 @@
                 >
 
                 <RelativeLayout
-                    android:id="@+id/my_orders"
+                    android:id="@+id/orders"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"

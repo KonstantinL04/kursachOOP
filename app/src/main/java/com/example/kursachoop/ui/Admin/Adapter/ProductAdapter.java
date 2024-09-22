@@ -47,7 +47,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     public void onBindViewHolder(@NonNull ProductViewHolder holder, int position) {
         Product product = productList.get(position);
         holder.productName.setText(product.getName());
-        holder.productPrice.setText(product.getPrice());
+        holder.productPrice.setText(product.getPrice() + "₽");
+        holder.productAvailability.setText(Integer.parseInt(product.getAvailability()) > 0
+                ? "В наличии: " + product.getAvailability()
+                : "Нет в наличии");
         Picasso.get().load(product.getImage()).into(holder.image);
 
         // Удаление товара
@@ -78,7 +81,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     public static class ProductViewHolder extends RecyclerView.ViewHolder {
         ImageView image, deleteButton, editProductBtn;
-        TextView productName, productPrice;
+        TextView productName, productPrice, productAvailability;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -86,7 +89,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productName = itemView.findViewById(R.id.recPname);
             productPrice = itemView.findViewById(R.id.recPrice);
             deleteButton = itemView.findViewById(R.id.delProduct);
-            editProductBtn = itemView.findViewById(R.id.editProduct);// Кнопка удаления товара
+            productAvailability = itemView.findViewById(R.id.recAvailability);
+            editProductBtn = itemView.findViewById(R.id.editProduct);
         }
     }
 

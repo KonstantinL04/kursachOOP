@@ -32,8 +32,8 @@ public class ProfileSettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_settings);
         Btn_exit_settings = (RelativeLayout) findViewById(R.id.exit_settings);
         BtnBack = (ImageView) findViewById(R.id.btn_back);
-        userNameTextView = (TextView) findViewById(R.id.nameSettings);
-        phoneTextView = (TextView) findViewById(R.id.phoneSettings);
+        userNameTextView = (TextView) findViewById(R.id.name);
+        phoneTextView = (TextView) findViewById(R.id.phone);
 
         String userPhone = Prevalent.currentOnlineUser.getPhone();
         String userName = Prevalent.currentOnlineUser.getName();

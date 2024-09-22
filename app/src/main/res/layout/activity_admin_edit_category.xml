@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.Admin.Home.Category.AdminEditProductActivity"
+    tools:context=".ui.Admin.Home.Category.AdminEditCategoryActivity"
     android:background="@color/grey">
 
     <RelativeLayout
