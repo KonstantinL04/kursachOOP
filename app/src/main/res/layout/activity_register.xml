@@ -66,6 +66,7 @@
                 android:layout_marginTop="30dp"
                 android:background="@drawable/button_login"
                 android:hint="Ваше имя*"
+                android:inputType="text"
                 android:padding="15dp" />
 
             <EditText

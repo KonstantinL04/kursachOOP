@@ -126,7 +126,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity {
         String brand = productBrand.getText().toString();
         String description = productDescription.getText().toString();
         String price = productPrice.getText().toString();
-        String availability = productAvailability.getText().toString();
+        int availability = Integer.parseInt(productAvailability.getText().toString());
 
         HashMap<String, Object> productMap = new HashMap<>();
         productMap.put("id", productId);

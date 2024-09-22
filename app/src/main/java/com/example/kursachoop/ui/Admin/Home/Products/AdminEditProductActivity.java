@@ -85,15 +85,16 @@ public class AdminEditProductActivity extends AppCompatActivity {
         }
 
         try {
+//            int availability = Integer.parseInt(availabilityStr);
             productRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    String imageUrl = dataSnapshot.child("image").getValue(String.class); // Получите текущий imageUrl
-                    Product product = new Product(productId, name, brand, description, price, availability, imageUrl);
+                    String imageUrl = dataSnapshot.child("image").getValue(String.class);
+                    Product product = new Product(productId, name, price, imageUrl, description, brand, availability );
                     productRef.setValue(product).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(AdminEditProductActivity.this, "Товар обновлен успешно", Toast.LENGTH_SHORT).show();
-                            finish(); // Закрыть Activity после успешного обновления
+                            finish();
                         } else {
                             Toast.makeText(AdminEditProductActivity.this, "Ошибка обновления товара", Toast.LENGTH_SHORT).show();
                         }
@@ -106,7 +107,7 @@ public class AdminEditProductActivity extends AppCompatActivity {
                 }
             });
         } catch (NumberFormatException e) {
-            Toast.makeText(AdminEditProductActivity.this, "Некорректная цена", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AdminEditProductActivity.this, "Некорректное количество", Toast.LENGTH_SHORT).show();
         }
     }
 }

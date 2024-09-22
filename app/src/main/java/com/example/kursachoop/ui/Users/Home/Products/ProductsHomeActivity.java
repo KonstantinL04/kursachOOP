@@ -16,14 +16,11 @@ import android.widget.Toast;
 
 import com.example.kursachoop.Interface.ItemClickListener;
 import com.example.kursachoop.Model.Product;
+import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
-import com.example.kursachoop.ui.Admin.Adapter.ProductAdapter;
-import com.example.kursachoop.ui.Admin.Home.Category.AdminAddCategoryActivity;
-import com.example.kursachoop.ui.Admin.Home.Category.AdminHomeActivity;
-import com.example.kursachoop.ui.Admin.Home.Products.AdminAddNewProductActivity;
-import com.example.kursachoop.ui.Admin.Profile.AdminProfileActivity;
 import com.example.kursachoop.ui.Users.Adapter.ProductAdapterHome;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
+import com.example.kursachoop.ui.Users.Home.Category.HomeActivity;
 import com.example.kursachoop.ui.Users.Profile.ProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -32,8 +29,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +56,7 @@ public class ProductsHomeActivity extends AppCompatActivity implements ItemClick
             return;
         }
 
-        categoryNameTxt = findViewById(R.id.category);
+        categoryNameTxt = findViewById(R.id.products);
         categoryNameTxt.setText(categoryName);
         recyclerViewProducts = findViewById(R.id.recycler_products_admin);
         recyclerViewProducts.setHasFixedSize(true);
@@ -80,6 +75,7 @@ public class ProductsHomeActivity extends AppCompatActivity implements ItemClick
                 int itemId = item.getItemId();
                 if (itemId == R.id.homeActivity) {
                     item.setIcon(R.drawable.home_sel);
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     return true;
                 } else if (itemId == R.id.binActivity) {
                     item.setIcon(R.drawable.bin_sel);
@@ -95,6 +91,7 @@ public class ProductsHomeActivity extends AppCompatActivity implements ItemClick
                 return false;
             }
         });
+
     }
 
     private void loadProductsByCategory() {

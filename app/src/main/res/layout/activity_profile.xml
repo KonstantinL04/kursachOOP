@@ -75,7 +75,7 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/profile_name"
+                        android:id="@+id/profileName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -86,7 +86,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/profile_mail"
+                        android:id="@+id/profilePhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -114,7 +114,7 @@
                 android:layout_marginBottom="5dp"
                 >
                 <RelativeLayout
-                    android:id="@+id/my_orders"
+                    android:id="@+id/orders"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/button_login"
@@ -143,7 +143,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/about_it"
+                    android:id="@+id/aboutIt"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@drawable/button_login"

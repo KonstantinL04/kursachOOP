@@ -59,7 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/recPrice2"
+                android:id="@+id/recAvailability"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:paddingHorizontal="5dp"
@@ -67,12 +67,12 @@
                 android:textSize="16sp"
                 android:textColor="@color/gradientStart"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/button2"
+                app:layout_constraintEnd_toStartOf="@+id/btn_add_bin"
                 app:layout_constraintStart_toEndOf="@+id/recPrice"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/btn_add_bin"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
@@ -80,7 +80,7 @@
                 android:layout_marginEnd="15dp"
                 android:layout_toEndOf="@id/recPrice"
                 android:background="@drawable/btn_buy"
-                android:text="Купить"
+                android:text="В корзину"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold"

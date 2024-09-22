@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <TextView
-            android:id="@+id/category"
+            android:id="@+id/products"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
@@ -36,7 +36,7 @@
             android:id="@+id/find_edTxt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/category"
+            android:layout_below="@id/products"
             android:layout_alignParentStart="true"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
@@ -46,6 +46,7 @@
             android:drawableStart="@drawable/search"
             android:drawablePadding="5dp"
             android:hint="Искать в 1R"
+            android:inputType="text"
             android:padding="10dp"
             android:textColorHint="#CDCDCD" />
     </RelativeLayout>

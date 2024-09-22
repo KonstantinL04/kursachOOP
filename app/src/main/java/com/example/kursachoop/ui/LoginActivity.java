@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -208,6 +209,7 @@ public class LoginActivity extends AppCompatActivity {
         if(checkBoxRememberMe.isChecked() && parrentDbName.equals("Users")){
             Paper.book().write(Prevalent.UserPhoneKey, phone);
             Paper.book().write(Prevalent.UserPasswordKey, password);
+            Log.d("LoginActivity", "Данные пользователя сохранены: " + phone);
 
         }else if(checkBoxRememberMe.isChecked() && parrentDbName.equals("Admins")) {
             Paper.book().write(Prevalent.AdminPhoneKey, phone);
@@ -226,6 +228,7 @@ public class LoginActivity extends AppCompatActivity {
                     assert usersData != null;
                     if (usersData.getPhone().equals(phone) && usersData.getPassword().equals(password)) {
                         if (parrentDbName.equals("Users")){
+                            Prevalent.currentOnlineUser = usersData;
                             Toast.makeText(LoginActivity.this, "Успешная авторизация", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
@@ -257,7 +260,7 @@ public class LoginActivity extends AppCompatActivity {
                                 assert adminsData != null;
                                 if (adminsData.getPhone().equals(phone) && adminsData.getPassword().equals(password)) {
                                     if (parrentDbName.equals("Admins")){
-                                        // Пользователь успешно авторизован как администратор
+                                        Prevalent.currentOnlineAdmins = adminsData;
                                         Toast.makeText(LoginActivity.this, "Успешная авторизация", Toast.LENGTH_SHORT).show();
                                         loadingBar.dismiss();
                                         SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);

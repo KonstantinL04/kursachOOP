@@ -6,10 +6,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kursachoop.Prevalent.Prevalent;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.LoginActivity;
 import com.example.kursachoop.ui.Users.Bin.BinActivity;
@@ -23,12 +25,22 @@ public class ProfileSettingsActivity extends AppCompatActivity {
     private ImageView BtnBack;
     private RelativeLayout Btn_exit_settings;
     private BottomNavigationView nav;
+    private TextView userNameTextView, phoneTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_settings);
         Btn_exit_settings = (RelativeLayout) findViewById(R.id.exit_settings);
         BtnBack = (ImageView) findViewById(R.id.btn_back);
+        userNameTextView = (TextView) findViewById(R.id.nameSettings);
+        phoneTextView = (TextView) findViewById(R.id.phoneSettings);
+
+        String userPhone = Prevalent.currentOnlineUser.getPhone();
+        String userName = Prevalent.currentOnlineUser.getName();
+
+        userNameTextView.setText(userName);
+        phoneTextView.setText(userPhone);
+
         nav = findViewById(R.id.nav);
         nav.setSelectedItemId(R.id.profileActivity);
         BtnBack.setOnClickListener(new View.OnClickListener() {

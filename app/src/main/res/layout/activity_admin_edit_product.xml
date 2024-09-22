@@ -83,7 +83,8 @@
                 android:inputType="textMultiLine"
                 android:padding="10dp"
                 android:shadowDy="3"
-                android:shadowRadius="3" />
+                android:shadowRadius="3"
+                android:maxLength="50"/>
 
             <EditText
                 android:id="@+id/product_brand"
@@ -97,7 +98,8 @@
                 android:inputType="textMultiLine"
                 android:padding="10dp"
                 android:shadowDy="3"
-                android:shadowRadius="3" />
+                android:shadowRadius="3"
+                android:maxLength="50"/>
 
             <EditText
                 android:id="@+id/product_description"
@@ -111,7 +113,8 @@
                 android:inputType="textMultiLine"
                 android:padding="10dp"
                 android:shadowDy="3"
-                android:shadowRadius="3" />
+                android:shadowRadius="3"
+                android:maxLength="1000"/>
 
             <EditText
                 android:id="@+id/product_price"
@@ -125,7 +128,8 @@
                 android:inputType="numberDecimal"
                 android:padding="10dp"
                 android:shadowDy="3"
-                android:shadowRadius="3" />
+                android:shadowRadius="3"
+                android:maxLength="10"/>
 
             <EditText
                 android:id="@+id/product_availability"
@@ -136,10 +140,11 @@
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/button_login"
                 android:hint="Наличие"
-                android:inputType="text"
+                android:inputType="number"
                 android:padding="10dp"
                 android:shadowDy="3"
-                android:shadowRadius="3" />
+                android:shadowRadius="3"
+                android:maxLength="10"/>
 
             <Button
                 android:id="@+id/btn_update_product"

@@ -18,8 +18,6 @@ import com.example.kursachoop.Interface.ItemClickListener;
 import com.example.kursachoop.Model.Product;
 import com.example.kursachoop.R;
 import com.example.kursachoop.ui.Admin.Adapter.ProductAdapter;
-import com.example.kursachoop.ui.Admin.Home.Category.AdminAddCategoryActivity;
-import com.example.kursachoop.ui.Admin.Home.Category.AdminHomeActivity;
 import com.example.kursachoop.ui.Admin.Profile.AdminProfileActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -28,8 +26,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +54,7 @@ public class AdminProductsActivity extends AppCompatActivity implements ItemClic
             return;
         }
 
-        categoryNameTxt = findViewById(R.id.category);
+        categoryNameTxt = findViewById(R.id.products);
         categoryNameTxt.setText(categoryName);
         addProductBtn = findViewById(R.id.add_product);
         recyclerViewProducts = findViewById(R.id.recycler_products_admin);

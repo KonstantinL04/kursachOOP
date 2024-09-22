@@ -83,7 +83,8 @@
                 android:inputType="textMultiLine"
                 android:padding="10dp"
                 android:shadowDy="3"
-                android:shadowRadius="3" />
+                android:shadowRadius="3"
+                android:maxLength="50"/>
 
             <Button
                 android:id="@+id/btn_update_category"
